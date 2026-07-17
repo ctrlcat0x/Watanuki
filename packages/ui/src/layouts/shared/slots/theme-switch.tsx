@@ -1,5 +1,5 @@
 'use client';
-import { cva } from 'class-variance-authority';
+import { cva } from '@/utils/cva';
 import { Airplay, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { type ComponentProps, useEffect, useState } from 'react';

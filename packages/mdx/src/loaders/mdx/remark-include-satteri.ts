@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import * as path from 'node:path';
-import Slugger from 'github-slugger';
+import Slugger from '@watanuki/core/utils/slugger';
 import { defineMdastPlugin, mdxToMdast, markdownToMdast } from 'satteri';
 import type { MdastContent, MdastPluginDefinition, MdastVisitorContext } from 'satteri';
 import '@/loaders/mdx/satteri-data-map';

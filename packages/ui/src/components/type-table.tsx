@@ -3,7 +3,7 @@
 import { ChevronDown } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import Link from '@watanuki/core/link';
-import { cva } from 'class-variance-authority';
+import { cva } from '@/utils/cva';
 import { cn } from '@/utils/cn';
 import { type ComponentProps, type ReactNode, useEffect, useState } from 'react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';

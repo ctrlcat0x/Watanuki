@@ -1,11 +1,13 @@
 import path from 'node:path';
-import { x } from 'tinyexec';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import type { Plugin } from '@/core';
 import { ident } from '@/utils/codegen';
 
 // one batched `git log` pass per cwd: per-file `git log -1` walks the history
 // for every document, which dominates build time on large repos.
 const cache = new Map<string, Promise<Map<string, Date>>>();
+const execFileAsync = promisify(execFile);
 type VersionControlFn = (filePath: string) => Promise<Date | null | undefined>;
 
 export interface LastModifiedPluginOptions {
@@ -106,26 +108,23 @@ function getGitTimestamps(cwd: string): Promise<Map<string, Date>> {
   const promise = (async () => {
     const timestamps = new Map<string, Date>();
     // `--name-only` paths are relative to the repository root, not `cwd`
-    const root = await x('git', ['rev-parse', '--show-toplevel'], { nodeOptions: { cwd } });
-    if (root.exitCode !== 0) return timestamps;
+    const root = await runGit(['rev-parse', '--show-toplevel'], cwd);
+    if (!root) return timestamps;
 
-    const out = await x(
-      'git',
+    const out = await runGit(
       ['-c', 'core.quotepath=off', 'log', '--format=commit:%aI', '--name-only'],
-      {
-        nodeOptions: { cwd },
-      },
+      cwd,
     );
-    if (out.exitCode !== 0) return timestamps;
+    if (!out) return timestamps;
 
     // newest first: keep the first date seen for each file
     let date: Date | undefined;
-    for (const line of out.stdout.split('\n')) {
+    for (const line of out.split('\n')) {
       if (line.startsWith('commit:')) {
         const parsed = new Date(line.slice('commit:'.length));
         date = isNaN(parsed.getTime()) ? undefined : parsed;
       } else if (line.length > 0 && date) {
-        const file = path.join(root.stdout.trim(), line);
+        const file = path.join(root.trim(), line);
         if (!timestamps.has(file)) timestamps.set(file, date);
       }
     }
@@ -135,4 +134,17 @@ function getGitTimestamps(cwd: string): Promise<Map<string, Date>> {
 
   cache.set(cwd, promise);
   return promise;
+}
+
+async function runGit(args: string[], cwd: string): Promise<string | null> {
+  try {
+    const { stdout } = await execFileAsync('git', args, {
+      cwd,
+      encoding: 'utf8',
+      maxBuffer: 64 * 1024 * 1024,
+    });
+    return stdout;
+  } catch {
+    return null;
+  }
 }

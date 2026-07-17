@@ -1,5 +1,6 @@
 import type { CollectionSchema } from '@/config';
 import type { StandardSchemaV1 } from '@standard-schema/spec';
+import { styleText } from 'node:util';
 
 export class ValidationError extends Error {
   title: string;
@@ -12,18 +13,13 @@ export class ValidationError extends Error {
     this.issues = issues;
   }
 
-  async toStringFormatted() {
-    // Handle ESM/CJS interop: picocolors is a CJS module that exports via
-    // module.exports = createColors(). When dynamically imported in ESM context
-    // (e.g., Next.js 16 Turbopack), the exports are wrapped under .default
-    const picocolorsModule = await import('picocolors');
-    const picocolors = picocolorsModule.default ?? picocolorsModule;
-
+  toStringFormatted() {
     return [
-      picocolors.bold(`[MDX] ${this.title}:`),
+      styleText('bold', `[MDX] ${this.title}:`),
       ...this.issues.map((issue) =>
-        picocolors.redBright(
-          `- ${picocolors.bold(issue.path?.join('.') ?? '*')}: ${issue.message}`,
+        styleText(
+          'redBright',
+          `- ${styleText('bold', issue.path?.join('.') ?? '*')}: ${issue.message}`,
         ),
       ),
     ].join('\n');

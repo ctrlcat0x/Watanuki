@@ -10,7 +10,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { cva } from 'class-variance-authority';
+import { cva } from '@/utils/cva';
 import {
   createPageTreeRenderer,
   type SidebarPageTreeComponents,

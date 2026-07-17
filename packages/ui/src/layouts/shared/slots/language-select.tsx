@@ -5,7 +5,7 @@ import { useTranslations } from '@/contexts/translations';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/utils/cn';
 import { buttonVariants } from '@/components/ui/button';
-import type { VariantProps } from 'class-variance-authority';
+import type { VariantProps } from '@/utils/cva';
 import { Check, Languages } from 'lucide-react';
 
 export interface LanguageSelectProps extends ComponentProps<'button'> {

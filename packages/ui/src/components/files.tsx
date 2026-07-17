@@ -1,6 +1,6 @@
 'use client';
 
-import { cva } from 'class-variance-authority';
+import { cva } from '@/utils/cva';
 import { AnimatePresence, motion } from 'motion/react';
 import { ChevronRight, FileIcon, FolderIcon, FolderOpen } from 'lucide-react';
 import { type HTMLAttributes, type ReactNode, useState } from 'react';

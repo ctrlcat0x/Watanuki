@@ -2,7 +2,7 @@
 import * as Base from '@/components/sidebar/base';
 import { cn } from '@/utils/cn';
 import { type ComponentProps, type ReactNode, useMemo, useRef, useState } from 'react';
-import { cva } from 'class-variance-authority';
+import { cva } from '@/utils/cva';
 import {
   createPageTreeRenderer,
   type SidebarPageTreeComponents,

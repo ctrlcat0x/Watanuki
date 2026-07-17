@@ -18,7 +18,7 @@ import { useTranslations, T } from '@/contexts/translations';
 import { cn } from '@/utils/cn';
 import { Dialog } from '@base-ui/react/dialog';
 import type { HighlightedText, ReactSortedResult } from '@watanuki/core/search';
-import { cva } from 'class-variance-authority';
+import { cva } from '@/utils/cva';
 import { useRouter } from '@watanuki/core/framework';
 import type { SharedProps } from '@/contexts/search';
 import { useOnChange } from '@watanuki/core/utils/use-on-change';
