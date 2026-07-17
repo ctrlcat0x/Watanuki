@@ -40,7 +40,7 @@ publish_package() {
   fi
 
   if [[ -z "${publish_directory}" ]]; then
-    publish_directory="$(mktemp -d -t watanuki-publish)"
+    publish_directory="$(mktemp -d "${TMPDIR:-/tmp}/watanuki-publish.XXXXXX")"
   fi
 
   local archive_name="${package_name#@}"
