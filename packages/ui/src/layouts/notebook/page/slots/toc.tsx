@@ -1,7 +1,7 @@
 'use client';
 import * as Base from '@/components/toc';
 import { resolveTOCStyle, type TOCStyleProps } from '@/components/toc/styles';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 import { cn } from '@/utils/cn';
 import { ChevronDown, Text } from 'lucide-react';
 import {

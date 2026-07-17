@@ -4,7 +4,7 @@ import { type HTMLAttributes, useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import { buttonVariants } from '@/components/ui/button';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 type BannerVariant = 'rainbow' | 'normal';
 

@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import { type ComponentProps, useEffect, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { cn } from '@/utils/cn';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 const itemVariants = cva('size-6.5 p-1.5 text-fd-muted-foreground', {
   variants: {

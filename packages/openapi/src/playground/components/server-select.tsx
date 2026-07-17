@@ -19,9 +19,14 @@ import {
   DialogTrigger,
 } from '@watanuki/api-docs/components/dialog';
 import type { ServerVariableObject } from '@/types';
-import { StfProvider, useFieldValue, useListener, useStf } from '@fumari/stf';
+import {
+  StfProvider,
+  useFieldValue,
+  useListener,
+  useStf,
+} from '@watanuki/api-docs/components/playground/state';
 import { EditIcon } from 'lucide-react';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import type { NoReference } from '@watanuki/api-docs/schema';
 import { resolveServerUrl } from '@watanuki/api-docs/utils/url';
 

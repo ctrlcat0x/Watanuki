@@ -13,7 +13,7 @@ import { idToTitle } from '@watanuki/api-docs/utils/id-to-title';
 import { UsageTabs } from '@/ui/operation/usage-tabs';
 import { Badge, MethodLabel } from '@/ui/components/method-label';
 import { OperationProvider } from './context';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import {
   AccordionContent,
   AccordionHeader,

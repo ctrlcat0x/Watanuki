@@ -14,7 +14,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useTranslations, T } from '@fuma-translate/react';
+import { useTranslations, T } from '@/contexts/translations';
 import { cn } from '@/utils/cn';
 import { Dialog } from '@base-ui/react/dialog';
 import type { HighlightedText, ReactSortedResult } from '@watanuki/core/search';

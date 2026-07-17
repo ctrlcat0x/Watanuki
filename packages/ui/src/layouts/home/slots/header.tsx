@@ -20,7 +20,7 @@ import { useIsScrollTop } from '@/utils/use-is-scroll-top';
 import { useHomeLayout } from '..';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { mergeRefs } from '@/utils/merge-refs';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 export const navItemVariants = cva('[&_svg]:size-4', {
   variants: {

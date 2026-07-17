@@ -19,7 +19,7 @@ import {
   SelectValue,
 } from '@watanuki/api-docs/components/select';
 import type { OAuth2SecurityScheme } from '@/types';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import { useAuth } from '../auth';
 import { useRenderContext } from '@/ui/contexts/api';
 

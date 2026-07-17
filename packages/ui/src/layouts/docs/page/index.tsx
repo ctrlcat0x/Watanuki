@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react';
 import { cn } from '@/utils/cn';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 import {
   TOC,
   TOCPopover,

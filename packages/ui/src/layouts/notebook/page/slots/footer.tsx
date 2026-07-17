@@ -8,7 +8,7 @@ import type * as PageTree from '@watanuki/core/page-tree';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from '@watanuki/core/link';
 import { type ComponentProps, useMemo } from 'react';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 type Item = Pick<PageTree.Item, 'name' | 'description' | 'url'>;
 

@@ -4,7 +4,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
 import Link from '@watanuki/core/link';
 import { HomeIcon } from 'lucide-react';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 /**
  * the default not found page content, please make your own if you want to customize it.

@@ -13,7 +13,7 @@ import {
 import { cn } from '@/utils/cn';
 import { useCopyButton } from '@/utils/use-copy-button';
 import { buttonVariants } from '@/components/ui/button';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 import {
   Tabs,
   TabsContent,

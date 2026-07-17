@@ -27,7 +27,7 @@ import { useMediaQuery } from '@watanuki/core/utils/use-media-query';
 import scrollIntoView from 'scroll-into-view-if-needed';
 import { usePathname } from '@watanuki/core/framework';
 import ReactDOM from 'react-dom';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 interface SidebarContext {
   open: boolean;

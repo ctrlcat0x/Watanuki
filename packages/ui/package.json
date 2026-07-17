@@ -1,6 +1,6 @@
 {
   "name": "@watanuki/ui",
-  "version": "16.10.7",
+  "version": "16.10.8",
   "description": "The Base UI version of Watanuki UI",
   "keywords": [
     "Docs",
@@ -71,6 +71,7 @@
     "./components/youtube": "./dist/components/youtube.js",
     "./contexts/i18n": "./dist/contexts/i18n.js",
     "./contexts/search": "./dist/contexts/search.js",
+    "./contexts/translations": "./dist/contexts/translations.js",
     "./contexts/tree": "./dist/contexts/tree.js",
     "./i18n": "./dist/i18n.js",
     "./layouts/docs": "./dist/layouts/docs/index.js",
@@ -145,11 +146,11 @@
     "clean": "rimraf dist",
     "dev": "concurrently \"tsdown --watch --clean false\" \"tailwindcss -i css/build.css -o ./css/generated/ui.css -w\"",
     "lint": "oxlint .",
+    "test": "vitest run",
     "types:check": "tsc --noEmit"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
-    "@fuma-translate/react": "^1.0.2",
     "@watanuki/tailwind": "workspace:*",
     "@watanuki/theme": "workspace:*",
     "class-variance-authority": "^0.7.1",
@@ -175,7 +176,6 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@watanuki/core": "workspace:*",
-    "fuma-cli": "^0.1.1",
     "react-medium-image-zoom": "^5.4.8",
     "tailwindcss": "^4.3.1",
     "tsconfig": "workspace:*",

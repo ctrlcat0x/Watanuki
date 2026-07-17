@@ -1,6 +1,6 @@
 {
   "name": "create-watanuki-versions",
-  "version": "16.0.133",
+  "version": "16.0.134",
   "private": true,
   "description": "Used to track dependency versions in create-watanuki",
   "dependencies": {

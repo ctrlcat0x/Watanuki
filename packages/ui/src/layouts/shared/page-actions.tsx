@@ -15,7 +15,7 @@ import { useCopyButton } from '@/utils/use-copy-button';
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import { buttonVariants } from '@/components/ui/button';
 import { usePathname } from '@watanuki/core/framework';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 import { useFooterItems } from '@/utils/use-footer-items';
 import { isActive } from '@/utils/urls';
 import Link from '@watanuki/core/link';

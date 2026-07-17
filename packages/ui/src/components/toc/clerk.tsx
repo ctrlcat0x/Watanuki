@@ -12,7 +12,7 @@ import {
 import { cn } from '@/utils/cn';
 import { useTOCItems } from '.';
 import { mergeRefs } from '@/utils/merge-refs';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 interface ComputedSVG {
   width: number;

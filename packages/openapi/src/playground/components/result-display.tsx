@@ -6,7 +6,7 @@ import { useStatusInfo } from '../status-info';
 import { buttonVariants } from '@watanuki/ui/components/ui/button';
 import { cn } from '@/utils/cn';
 import { ClientCodeBlock } from '@/ui/components/codeblock';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import { safeParse } from 'fast-content-type-parse';
 import { cva } from 'class-variance-authority';
 import type { BuiltinLanguage, SpecialLanguage } from 'shiki';

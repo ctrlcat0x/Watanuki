@@ -10,10 +10,9 @@ Publish from the monorepo root after `pnpm build`. Order matters for peer/worksp
 4. `@watanuki/mdx`
 5. `@watanuki/ui`
 6. `@watanuki/typescript` (optional AutoTypeTable)
-7. `@fumari/stf`
-8. `@watanuki/api-docs`
-9. `@watanuki/openapi`
-10. `create-watanuki` (last — pins versions from workspace packages)
+7. `@watanuki/api-docs`
+8. `@watanuki/openapi`
+9. `create-watanuki` (last — pins versions from workspace packages)
 
 | Package | npm name | Notes |
 |---------|----------|--------|
@@ -30,9 +29,9 @@ All publishable packages set `"publishConfig": { "access": "public" }`.
 
 ## Auth / org
 
-1. Create (or get access to) the `@watanuki` and `@fumari` npm orgs: https://www.npmjs.com/org/create
+1. Create (or get access to) the `@watanuki` npm org: https://www.npmjs.com/org/create
 2. Log in: `npm login` (or `npm login --auth-type=web`)
-3. Confirm: `npm whoami` and that you can publish under `@watanuki` and `@fumari`
+3. Confirm: `npm whoami` and that you can publish under `@watanuki`
 4. Use npm 2FA/OTP for the first manual publish. Subsequent releases use npm trusted publishing with no long-lived token.
 
 ## Versioning

@@ -2,7 +2,7 @@
 
 import * as Base from '@/components/toc';
 import { resolveTOCStyle, type TOCStyleProps } from '@/components/toc/styles';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 import { useTreePath } from '@/contexts/tree';
 import { cn } from '@/utils/cn';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';

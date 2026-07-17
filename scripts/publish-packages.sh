@@ -60,7 +60,6 @@ publish_package core
 publish_package mdx
 publish_package ui
 publish_package typescript
-publish_package stf
 publish_package api-docs
 publish_package openapi
 publish_package create-app

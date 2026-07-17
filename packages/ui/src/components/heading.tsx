@@ -4,7 +4,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 import { cn } from '@/utils/cn';
 import { buttonVariants } from './ui/button';
 import { useCopyButton } from '@/utils/use-copy-button';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 type Types = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 type HeadingProps<T extends Types> = Omit<ComponentPropsWithoutRef<T>, 'as'> & {

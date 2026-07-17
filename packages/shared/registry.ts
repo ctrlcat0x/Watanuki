@@ -1,6 +1,38 @@
 import { glob } from 'tinyglobby';
 import path from 'node:path';
-import type { Component } from 'fuma-cli/compiler';
+
+export interface RegistryFile {
+  path: string;
+  type: string;
+  target?: string;
+  content?: string;
+  meta?: {
+    preserveAs?: string;
+    [key: string]: unknown;
+  };
+}
+
+export interface Component {
+  name: string;
+  title?: string;
+  description?: string;
+  files?: RegistryFile[];
+  dependencies?: Record<string, string | null>;
+  devDependencies?: Record<string, string | null>;
+  unlisted?: boolean;
+  meta?: unknown;
+}
+
+export interface Registry {
+  name: string;
+  dir: string;
+  components: Component[];
+  packageJson?: string;
+  tsconfigPath?: string;
+  dependencies?: Record<string, string | null>;
+  devDependencies?: Record<string, string | null>;
+  subRegistries?: Registry[];
+}
 
 export async function findSlotComponents(dir: string): Promise<Component[]> {
   const slots: Component[] = [];

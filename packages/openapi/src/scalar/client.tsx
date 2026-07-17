@@ -6,7 +6,7 @@ import { MethodLabel } from '@/ui/components/method-label';
 import { useTheme } from '@watanuki/ui/provider/base';
 import { useEffect, useState } from 'react';
 import type { HttpMethods } from '@/types';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import '@scalar/api-client-react/style.css';
 
 export default function ScalarPlayground({

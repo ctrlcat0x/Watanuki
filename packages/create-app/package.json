@@ -1,6 +1,6 @@
 {
   "name": "create-watanuki",
-  "version": "16.0.133",
+  "version": "16.0.134",
   "description": "Create a new documentation site with Watanuki",
   "keywords": [
     "Docs",
@@ -45,7 +45,6 @@
     "@clack/prompts": "^1.6.0",
     "@commander-js/extra-typings": "^15.0.0",
     "commander": "^15.0.0",
-    "fuma-cli": "^0.1.1",
     "picocolors": "^1.1.1",
     "tinyexec": "^1.2.4",
     "ts-morph": "^28.0.0"

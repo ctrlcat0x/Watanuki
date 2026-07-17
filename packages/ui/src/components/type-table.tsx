@@ -7,7 +7,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/utils/cn';
 import { type ComponentProps, type ReactNode, useEffect, useState } from 'react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 export interface ParameterNode {
   name: string;

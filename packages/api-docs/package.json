@@ -1,6 +1,6 @@
 {
   "name": "@watanuki/api-docs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Shared utils for API docs generation",
   "keywords": [
     "Docs",
@@ -24,6 +24,11 @@
     "./components/input": "./dist/components/input.js",
     "./components/playground/inputs": "./dist/components/playground/inputs.js",
     "./components/playground/schema": "./dist/components/playground/schema.js",
+    "./components/playground/state": "./dist/components/playground/state/index.js",
+    "./components/playground/state/data-engine": "./dist/components/playground/state/data-engine.js",
+    "./components/playground/state/stf": "./dist/components/playground/state/stf.js",
+    "./components/playground/state/types": "./dist/components/playground/state/types.js",
+    "./components/playground/state/utils": "./dist/components/playground/state/utils.js",
     "./components/schema": "./dist/components/schema/index.js",
     "./components/schema/client": "./dist/components/schema/client.js",
     "./components/select": "./dist/components/select.js",
@@ -55,8 +60,6 @@
     "types:check": "tsc --noEmit"
   },
   "dependencies": {
-    "@fuma-translate/react": "^1.0.2",
-    "@fumari/stf": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.14",
     "@radix-ui/react-dialog": "^1.1.17",
     "@radix-ui/react-select": "^2.3.1",

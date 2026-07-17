@@ -48,8 +48,13 @@ import {
   useFieldValue,
   useListener,
   useStf,
-} from '@fumari/stf';
-import { arrayStartsWith, objectGet, objectSet, stringifyFieldKey } from '@fumari/stf/lib/utils';
+} from '@watanuki/api-docs/components/playground/state';
+import {
+  arrayStartsWith,
+  objectGet,
+  objectSet,
+  stringifyFieldKey,
+} from '@watanuki/api-docs/components/playground/state/utils';
 import {
   FieldInput,
   FieldSet,
@@ -57,7 +62,7 @@ import {
   ObjectInput,
 } from '@watanuki/api-docs/components/playground/inputs';
 import type { HttpMethods, OperationObject, ParameterObject, PathItemObject } from '@/types';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import { useOperationContext } from '@/ui/operation/context';
 import { OAuthDialog, OAuthDialogContent, OAuthDialogTrigger } from './components/oauth-dialog';
 import { dereferenceShallow } from '@watanuki/api-docs/schema/dereference';

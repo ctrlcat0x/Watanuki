@@ -2,7 +2,7 @@
 import type { ComponentProps } from 'react';
 import { Search } from 'lucide-react';
 import { useSearchContext } from '@/contexts/search';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 import { cn } from '@/utils/cn';
 import { type ButtonProps, buttonVariants } from '@/components/ui/button';
 

@@ -1,5 +1,5 @@
 'use client';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import {
   AccordionContent,
   AccordionHeader,

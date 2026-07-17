@@ -1,5 +1,5 @@
 import { CircleCheck, CircleX } from 'lucide-react';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import { useMemo } from 'react';
 
 interface StatusInfo {

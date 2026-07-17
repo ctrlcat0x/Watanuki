@@ -1,7 +1,9 @@
 'use client';
 import { createContext, type ReactNode, use, useEffect, useMemo, useRef } from 'react';
 import { usePathname, useRouter } from '@watanuki/core/framework';
-import { TranslationProvider } from '@fuma-translate/react';
+import { TranslationProvider } from './translations';
+
+export { fromTranslations, T, TranslationProvider, useTranslations } from './translations';
 
 interface LocaleItem {
   name: string;

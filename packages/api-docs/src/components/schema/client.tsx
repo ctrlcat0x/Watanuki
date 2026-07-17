@@ -15,7 +15,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import type {
   SchemaData,
   SchemaDataObjectProperty,

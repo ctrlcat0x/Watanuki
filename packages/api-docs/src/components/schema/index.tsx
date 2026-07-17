@@ -4,7 +4,7 @@ import type { ParsedSchema, SchemaResolver } from '@/schema';
 import { FormatFlags, schemaToString } from '@/schema/to-string';
 import { mergeAllOf } from '@/schema/merge';
 import { BlockTag, InlineTag, SchemaUI, type SchemaUIProps } from '@/components/schema/client';
-import { fromTranslations, useTranslations } from '@fuma-translate/react';
+import { fromTranslations, useTranslations } from '@watanuki/ui/contexts/i18n';
 
 interface InfoTag {
   node: ReactNode;

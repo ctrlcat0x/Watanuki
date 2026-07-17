@@ -11,7 +11,7 @@ import {
 import { Tab, Tabs } from '@watanuki/ui/components/tabs';
 import { sample } from '@watanuki/api-docs/schema/sample';
 import { useMemo, type ReactNode } from 'react';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import { Markdown } from '../components/markdown';
 import { ClientCodeBlock } from '../components/codeblock';
 import type { NoReference } from '@watanuki/api-docs/schema';

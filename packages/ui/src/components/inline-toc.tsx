@@ -5,7 +5,7 @@ import type { TOCItemType } from '@watanuki/core/toc';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 import type { ComponentProps } from 'react';
 import { cn } from '@/utils/cn';
-import { useTranslations } from '@fuma-translate/react';
+import { useTranslations } from '@/contexts/translations';
 
 export interface InlineTocProps extends ComponentProps<typeof Collapsible> {
   items: TOCItemType[];
