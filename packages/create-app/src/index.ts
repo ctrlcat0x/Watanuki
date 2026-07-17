@@ -101,7 +101,13 @@ export async function create(createOptions: Options): Promise<void> {
   await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
   const readmePath = path.join(outputDir, 'README.md');
-  let readme = `# ${projectName}\n\n${await fs.readFile(readmePath)}`;
+  const templateReadme = await fs
+    .readFile(readmePath, 'utf-8')
+    .catch((error: NodeJS.ErrnoException) => {
+      if (error.code === 'ENOENT') return '';
+      throw error;
+    });
+  let readme = `# ${projectName}${templateReadme ? `\n\n${templateReadme}` : ''}`;
   for (const plugin of plugins) {
     readme = (await plugin.readme?.call(pluginContext, readme)) ?? readme;
   }
