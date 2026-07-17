@@ -8,11 +8,11 @@
   ],
   "homepage": "https://watanuki.dev",
   "bugs": {
-    "url": "https://github.com/fuma-nama/watanuki/issues"
+    "url": "https://github.com/ctrlcat0x/Watanuki/issues"
   },
   "license": "MIT",
   "author": "Fuma Nama",
-  "repository": "github:fuma-nama/watanuki",
+  "repository": "github:ctrlcat0x/Watanuki",
   "bin": {
     "watanuki-mdx": "./bin.js"
   },

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Watanuki styles (layout) and themes (colors)",
   "license": "MIT",
+  "repository": "github:ctrlcat0x/Watanuki",
   "publishConfig": {
     "access": "public"
   },
