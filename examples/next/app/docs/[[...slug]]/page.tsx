@@ -14,6 +14,8 @@ import type { Metadata } from 'next';
 import { createRelativeLink } from '@watanuki/ui/mdx';
 import { gitConfig } from '@/lib/shared';
 import { watanukiConfig } from '@/lib/watanuki.config';
+import { appName, siteUrl } from '@/lib/shared';
+import { createDocsJsonLd, createDocsMetadata } from '@watanuki/ui/metadata';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -22,6 +24,14 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
 
   const MDX = page.data.body;
   const markdownUrl = getPageMarkdownUrl(page).url;
+  const image = getPageImage(page).url;
+  const jsonLd = createDocsJsonLd({
+    title: page.data.title,
+    description: page.data.description,
+    path: page.url,
+    image,
+    baseUrl: siteUrl,
+  });
 
   return (
     <DocsPage
@@ -41,6 +51,10 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
         <PagePagerButtons className="ms-auto" />
       </div>
       <DocsBody>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <MDX
           components={getMDXComponents({
             // this allows you to link to other pages with relative file paths
@@ -61,11 +75,12 @@ export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): P
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  return {
+  return createDocsMetadata({
     title: page.data.title,
     description: page.data.description,
-    openGraph: {
-      images: getPageImage(page).url,
-    },
-  };
+    path: page.url,
+    image: getPageImage(page).url,
+    baseUrl: siteUrl,
+    siteName: appName,
+  });
 }

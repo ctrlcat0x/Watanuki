@@ -27,7 +27,6 @@ export function generateStaticParams() {
   if (!isOgEnabled()) return [];
 
   return source.getPages().map((page) => ({
-    lang: page.locale,
     slug: getPageImage(page).segments,
   }));
 }
