@@ -11,7 +11,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import scrollIntoView from 'scroll-into-view-if-needed';
 import { mergeRefs } from '@/utils/merge-refs';
 import { isEqualShallow } from './utils/is-equal';
 
@@ -109,12 +108,15 @@ export function TOCItem({ ref, onActiveChange = () => null, ...props }: TOCItemP
     }
 
     if (lastActive?.id === id) {
-      scrollIntoView(anchor, {
-        behavior: instant ? 'instant' : 'smooth',
-        block: 'center',
-        inline: 'center',
-        scrollMode: 'always',
-        boundary: container,
+      const anchorRect = anchor.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      container.scrollTo({
+        behavior: instant ? 'auto' : 'smooth',
+        top:
+          container.scrollTop +
+          anchorRect.top -
+          containerRect.top -
+          (container.clientHeight - anchorRect.height) / 2,
       });
     }
   }

@@ -1,4 +1,4 @@
-import Slugger from 'github-slugger';
+import Slugger from '@/utils/slugger';
 import type { Heading, Root } from 'mdast';
 import type { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';

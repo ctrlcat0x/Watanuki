@@ -1,5 +1,10 @@
-# Watanuki UI
+# @watanuki/ui
 
-The React.js docs framework.
+Ready-to-use React components and layouts for Watanuki documentation sites.
 
-[Read Documentation](https://watanuki.dev/docs/ui)
+```bash
+pnpm add @watanuki/ui
+```
+
+[Documentation](https://watanuki.dev/docs/ui) ·
+[Source](https://github.com/ctrlcat0x/Watanuki/tree/main/packages/ui)

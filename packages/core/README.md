@@ -1,5 +1,11 @@
-# Watanuki Core
+# @watanuki/core
 
-The core library for Watanuki.
+Core utilities for building Watanuki documentation sites. It provides content loading, page
+trees, search, syntax highlighting, internationalization, and MDX plugins.
 
-📘 Learn More: [Documentation](https://watanuki.dev)
+```bash
+pnpm add @watanuki/core
+```
+
+[Documentation](https://watanuki.dev) ·
+[Source](https://github.com/ctrlcat0x/Watanuki/tree/main/packages/core)

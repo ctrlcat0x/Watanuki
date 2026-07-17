@@ -2,7 +2,7 @@ import type { Transformer } from 'unified';
 import type { Root, RootContent } from 'mdast';
 import { visit } from 'unist-util-visit';
 import { flattenNode } from './utils';
-import Slugger from 'github-slugger';
+import Slugger from '@/utils/slugger';
 import { createHash } from 'node:crypto';
 
 export interface RemarkBlockIdOptions {
