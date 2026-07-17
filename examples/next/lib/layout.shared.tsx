@@ -9,8 +9,8 @@ export function baseOptions(): BaseLayoutProps {
       title: appName,
     },
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
-    themeSwitch: {
-      component: <WatanukiThemeSwitch />,
+    slots: {
+      themeSwitch: WatanukiThemeSwitch,
     },
   };
 }
