@@ -1,4 +1,4 @@
-import { slug } from 'github-slugger';
+import { slug } from '@watanuki/core/utils/slugger';
 
 /** slugify segments, append `\0` to keep segment as-is */
 export function anchorSegments(...segs: string[]): string {

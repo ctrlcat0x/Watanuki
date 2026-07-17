@@ -1,6 +1,6 @@
 {
   "name": "@watanuki/core",
-  "version": "16.10.7",
+  "version": "16.10.8",
   "description": "The React.js library for building a documentation website",
   "keywords": [
     "Docs",
@@ -82,6 +82,7 @@
     "./source/schema": "./dist/source/schema.js",
     "./source/sitemap": "./dist/source/sitemap.js",
     "./toc": "./dist/toc.js",
+    "./utils/slugger": "./dist/utils/slugger.js",
     "./utils/use-media-query": "./dist/utils/use-media-query.js",
     "./utils/use-on-change": "./dist/utils/use-on-change.js",
     "./package.json": "./package.json",

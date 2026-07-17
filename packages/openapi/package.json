@@ -12,7 +12,8 @@
   "repository": "github:ctrlcat0x/Watanuki",
   "files": [
     "css",
-    "dist"
+    "dist",
+    "third-party-licenses"
   ],
   "type": "module",
   "exports": {
@@ -49,14 +50,9 @@
   },
   "dependencies": {
     "@watanuki/api-docs": "workspace:*",
-    "@fumari/json-schema-ts": "^0.0.2",
     "chokidar": "^5.0.0",
-    "class-variance-authority": "^0.7.1",
-    "cnfast": "^0.0.8",
-    "github-slugger": "^2.0.0",
     "hast-util-to-jsx-runtime": "^2.3.6",
     "js-yaml": "^5.1.0",
-    "lucide-react": "^1.21.0",
     "remark": "^15.0.1",
     "remark-rehype": "^11.1.2",
     "shiki": "^4.2.0"
@@ -67,6 +63,8 @@
     "@tailwindcss/oxide": "^4.3.1",
     "@types/node": "26.0.0",
     "@types/react": "^19.2.17",
+    "@typescript-eslint/types": "^8.56.1",
+    "esrap": "^2.2.3",
     "fast-content-type-parse": "^3.0.0",
     "@watanuki/core": "workspace:*",
     "@watanuki/ui": "workspace:*",
@@ -78,8 +76,8 @@
   "peerDependencies": {
     "@scalar/api-client-react": "^2.0.20",
     "@types/react": "*",
-    "@watanuki/core": "^16.10.0",
-    "@watanuki/ui": "^16.10.0",
+    "@watanuki/core": "^16.10.8",
+    "@watanuki/ui": "^16.10.8",
     "json-schema-typed": "*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
@@ -96,7 +94,10 @@
     }
   },
   "inlinedDependencies": {
+    "@jridgewell/sourcemap-codec": "1.5.5",
     "@scalar/openapi-upgrader": "0.2.9",
+    "@typescript-eslint/types": "8.64.0",
+    "esrap": "2.2.13",
     "fast-content-type-parse": "3.0.0",
     "xml-js": "1.6.11"
   }

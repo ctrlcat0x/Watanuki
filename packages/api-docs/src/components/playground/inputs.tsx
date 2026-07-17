@@ -1,6 +1,6 @@
 'use client';
 import { type ComponentProps, type HTMLAttributes, type ReactNode, useState } from 'react';
-import { ChevronRight, Plus, Trash2, X } from 'lucide-react';
+import { ChevronRight, Plus, Trash2, X } from '@watanuki/ui/icons';
 import { FieldKey, useArray, useDataEngine, useFieldValue, useObject } from './state';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/select';
 import { Input, labelVariants } from '@/components/input';
@@ -16,10 +16,11 @@ import {
 } from '@/components/playground/schema';
 import type { ParsedSchema } from '@/schema';
 import { stringifyFieldKey } from './state/utils';
-import { cva } from 'class-variance-authority';
 import { useTranslations } from '@watanuki/ui/contexts/i18n';
 
-const fieldLabelVariants = cva('w-full inline-flex items-center gap-0.5');
+function fieldLabelVariants() {
+  return 'w-full inline-flex items-center gap-0.5';
+}
 
 function FieldLabelType(props: ComponentProps<'code'>) {
   return (

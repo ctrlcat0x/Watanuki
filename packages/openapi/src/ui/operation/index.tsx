@@ -34,7 +34,7 @@ import { ServerProvider, useRenderContext } from '../contexts/api';
 import type { NoReference } from '@watanuki/api-docs/schema';
 import { useCopyButton } from '@watanuki/ui/utils/use-copy-button';
 import { buttonVariants } from '@watanuki/ui/components/ui/button';
-import { Check, Copy } from 'lucide-react';
+import { Check, Copy } from '@watanuki/ui/icons';
 import PlaygroundClient from '@/playground/client';
 
 const paramTypeKeys = ['path', 'query', 'header', 'cookie'] as const;

@@ -18,7 +18,7 @@ import { toJsxRuntime } from 'hast-util-to-jsx-runtime';
 import * as JsxRuntime from 'react/jsx-runtime';
 import { Operation } from '@/ui/operation';
 import { ServerProvider, useRenderContext } from './contexts/api';
-import { compile } from '@fumari/json-schema-ts';
+import { compile } from '@/utils/json-schema-ts';
 import { ClientCodeBlock } from './components/codeblock';
 import { dereferenceBundledDocument } from '@/utils/document/dereference';
 import { AuthProvider } from '@/playground/auth';

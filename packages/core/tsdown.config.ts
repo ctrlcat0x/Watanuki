@@ -20,6 +20,7 @@ export default defineConfig({
     'src/search/client/{algolia,fetch,orama-cloud,orama-static}.ts',
     'src/utils/use-on-change.ts',
     'src/utils/use-media-query.ts',
+    'src/utils/slugger.ts',
     'src/i18n/*.ts',
     'src/highlight/{index,client}.ts',
     'src/highlight/shiki/*',

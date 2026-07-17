@@ -10,6 +10,7 @@ export default defineConfig({
   entry: [
     './src/*.{ts,tsx}',
     './src/{components,contexts,provider,tailwind,og}/**/*.{ts,tsx}',
+    './src/utils/cn.ts',
     './src/layouts/*/index.tsx',
     './src/layouts/*/page/index.tsx',
     './src/layouts/**/slots/*',

@@ -25,7 +25,7 @@ import {
   useListener,
   useStf,
 } from '@watanuki/api-docs/components/playground/state';
-import { EditIcon } from 'lucide-react';
+import { EditIcon } from '@watanuki/ui/icons';
 import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import type { NoReference } from '@watanuki/api-docs/schema';
 import { resolveServerUrl } from '@watanuki/api-docs/utils/url';

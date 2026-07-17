@@ -1,6 +1,6 @@
 'use client';
 import { ReactNode, useEffect, useMemo, useState, type ComponentProps } from 'react';
-import { CircleX } from 'lucide-react';
+import { CircleX } from '@watanuki/ui/icons';
 import type { FetchResponseResult, FetchResult } from '@/playground/fetcher';
 import { useStatusInfo } from '../status-info';
 import { buttonVariants } from '@watanuki/ui/components/ui/button';
@@ -8,7 +8,6 @@ import { cn } from '@/utils/cn';
 import { ClientCodeBlock } from '@/ui/components/codeblock';
 import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import { safeParse } from 'fast-content-type-parse';
-import { cva } from 'class-variance-authority';
 import type { BuiltinLanguage, SpecialLanguage } from 'shiki';
 
 export interface ResultDisplayProps extends ComponentProps<'div'> {
@@ -16,9 +15,9 @@ export interface ResultDisplayProps extends ComponentProps<'div'> {
   reset: () => void;
 }
 
-const panelVariants = cva(
-  'flex flex-col gap-2 mt-2 px-3 py-2 border-y bg-fd-secondary text-fd-secondary-foreground',
-);
+function panelVariants() {
+  return 'flex flex-col gap-2 mt-2 px-3 py-2 border-y bg-fd-secondary text-fd-secondary-foreground';
+}
 
 export function DefaultResultDisplay({ data, reset, ...rest }: ResultDisplayProps) {
   const t = useTranslations({ note: 'playground result display' });

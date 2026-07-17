@@ -1,7 +1,7 @@
 'use client';
 
 import * as Primitive from '@radix-ui/react-accordion';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight } from '@watanuki/ui/icons';
 import { createContext, use, useEffect, useMemo, useState, type ComponentProps } from 'react';
 import { cn } from '@/utils/cn';
 import { anchorIdStartsWith } from '@/auto-anchor';

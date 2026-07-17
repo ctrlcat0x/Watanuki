@@ -260,21 +260,9 @@ importers:
       '@radix-ui/react-select':
         specifier: ^2.3.1
         version: 2.3.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      class-variance-authority:
-        specifier: ^0.7.1
-        version: 0.7.1
-      cnfast:
-        specifier: ^0.0.8
-        version: 0.0.8
-      github-slugger:
-        specifier: ^2.0.0
-        version: 2.0.0
       js-yaml:
         specifier: ^5.1.0
         version: 5.2.1
-      lucide-react:
-        specifier: ^1.21.0
-        version: 1.23.0(react@19.2.7)
       react:
         specifier: ^19.2.0
         version: 19.2.7
@@ -660,33 +648,18 @@ importers:
 
   packages/openapi:
     dependencies:
-      '@fumari/json-schema-ts':
-        specifier: ^0.0.2
-        version: 0.0.2(json-schema-typed@8.0.2)
       '@watanuki/api-docs':
         specifier: workspace:*
         version: link:../api-docs
       chokidar:
         specifier: ^5.0.0
         version: 5.0.0
-      class-variance-authority:
-        specifier: ^0.7.1
-        version: 0.7.1
-      cnfast:
-        specifier: ^0.0.8
-        version: 0.0.8
-      github-slugger:
-        specifier: ^2.0.0
-        version: 2.0.0
       hast-util-to-jsx-runtime:
         specifier: ^2.3.6
         version: 2.3.6
       js-yaml:
         specifier: ^5.1.0
         version: 5.2.1
-      lucide-react:
-        specifier: ^1.21.0
-        version: 1.23.0(react@19.2.7)
       react:
         specifier: ^19.2.0
         version: 19.2.7
@@ -718,12 +691,18 @@ importers:
       '@types/react':
         specifier: ^19.2.17
         version: 19.2.17
+      '@typescript-eslint/types':
+        specifier: ^8.56.1
+        version: 8.64.0
       '@watanuki/core':
         specifier: workspace:*
         version: link:../core
       '@watanuki/ui':
         specifier: workspace:*
         version: link:../ui
+      esrap:
+        specifier: ^2.2.3
+        version: 2.2.13(@typescript-eslint/types@8.64.0)
       fast-content-type-parse:
         specifier: ^3.0.0
         version: 3.0.0
@@ -1434,15 +1413,6 @@ packages:
 
   '@formatjs/intl-localematcher@0.8.10':
     resolution: {integrity: sha512-P/IC3qws3jH+1fEs+o0RIFgXKRaQlFehjS5W0FPAqdo6hgzawLl+eD0q0JjheQ3XtoOe5n8WSYfX06KQZI/QJA==}
-
-  '@fumari/json-schema-ts@0.0.2':
-    resolution: {integrity: sha512-A2x8nj45r8Kc3Gqa+HpWRF9uzIMc9dySB6L2R2kiyjLHXWBsZUX99Atj5+Yup/iRQXQ9s8AX+uAPwPze7Xn05A==}
-    engines: {node: '>=20.0.0'}
-    peerDependencies:
-      json-schema-typed: ^8.0.2
-    peerDependenciesMeta:
-      json-schema-typed:
-        optional: true
 
   '@headlessui/tailwindcss@0.2.2':
     resolution: {integrity: sha512-xNe42KjdyA4kfUKLLPGzME9zkH7Q3rOZ5huFihWNWOQFxnItxPB3/67yBI8/qBfY8nwBRx5GHn4VprsoluVMGw==}
@@ -3346,6 +3316,10 @@ packages:
 
   '@types/web-bluetooth@0.0.21':
     resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
+
+  '@typescript-eslint/types@8.64.0':
+    resolution: {integrity: sha512-qjhfuTfLXjA4IOzXvz0rTjT01BqEiIgPoUeMwiEjnaHKJMTNo8rH5pYW1a2L/0Dnux2fPC85AeyJoWaGa8WxTA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@ungap/structured-clone@1.3.2':
     resolution: {integrity: sha512-5jsZFwgR5rTdKwidH9Qmat75RKwqfpKlWWB1frDkljN127mwqBu8K0PYo7/hFpF03IEJpfVPpCQDY/eDx3iHvA==}
@@ -6546,14 +6520,6 @@ snapshots:
     dependencies:
       '@formatjs/fast-memoize': 3.1.6
 
-  '@fumari/json-schema-ts@0.0.2(json-schema-typed@8.0.2)':
-    dependencies:
-      esrap: 2.2.13
-    optionalDependencies:
-      json-schema-typed: 8.0.2
-    transitivePeerDependencies:
-      - '@typescript-eslint/types'
-
   '@headlessui/tailwindcss@0.2.2(tailwindcss@4.3.2)':
     dependencies:
       tailwindcss: 4.3.2
@@ -8402,6 +8368,8 @@ snapshots:
 
   '@types/web-bluetooth@0.0.21': {}
 
+  '@typescript-eslint/types@8.64.0': {}
+
   '@ungap/structured-clone@1.3.2': {}
 
   '@upsetjs/venn.js@2.0.0':
@@ -9183,9 +9151,11 @@ snapshots:
       esrecurse: 4.3.0
       estraverse: 4.3.0
 
-  esrap@2.2.13:
+  esrap@2.2.13(@typescript-eslint/types@8.64.0):
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
+    optionalDependencies:
+      '@typescript-eslint/types': 8.64.0
 
   esrecurse@4.3.0:
     dependencies:

@@ -1,4 +1,4 @@
-import { CircleCheck, CircleX } from 'lucide-react';
+import { CircleCheck, CircleX } from '@watanuki/ui/icons';
 import { useTranslations } from '@watanuki/ui/contexts/i18n';
 import { useMemo } from 'react';
 

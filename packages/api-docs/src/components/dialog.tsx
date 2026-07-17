@@ -1,7 +1,7 @@
 'use client';
 
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { X } from 'lucide-react';
+import { X } from '@watanuki/ui/icons';
 import type { ComponentProps } from 'react';
 import { cn } from '@/utils/cn';
 import { buttonVariants } from '@watanuki/ui/components/ui/button';

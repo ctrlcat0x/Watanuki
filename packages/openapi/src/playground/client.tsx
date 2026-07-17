@@ -20,7 +20,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@watanuki/ui/components/ui/collapsible';
-import { ChevronDown, LoaderCircle } from 'lucide-react';
+import { ChevronDown, LoaderCircle } from '@watanuki/ui/icons';
 import { encodeRequestData } from '@/requests/media/encode';
 import { buttonVariants } from '@watanuki/ui/components/ui/button';
 import { cn } from '@/utils/cn';

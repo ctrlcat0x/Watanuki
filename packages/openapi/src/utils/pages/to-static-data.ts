@@ -1,5 +1,5 @@
 import type { Document, OperationObject } from '@/types';
-import Slugger from 'github-slugger';
+import Slugger from '@watanuki/core/utils/slugger';
 import type { TOCItemType } from '@watanuki/core/toc';
 import type { StructuredData } from '@watanuki/core/mdx-plugins';
 import type { GeneratedPageProps } from './builder';

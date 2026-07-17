@@ -22,10 +22,9 @@ import type {
   SchemaUIGeneratedData,
 } from '@/components/schema';
 import { buttonVariants } from '@watanuki/ui/components/ui/button';
-import { CheckIcon, FilterIcon, LinkIcon } from 'lucide-react';
+import { CheckIcon, FilterIcon, LinkIcon } from '@watanuki/ui/icons';
 import { Popover, PopoverContent, PopoverTrigger } from '@watanuki/ui/components/ui/popover';
 import { cn } from '@/utils/cn';
-import { cva } from 'class-variance-authority';
 import { useAnchorId } from '@/auto-anchor/client';
 import { useCopyButton } from '@watanuki/ui/utils/use-copy-button';
 import { mergeRefs } from '@/utils/merge-refs';
@@ -55,14 +54,13 @@ interface StateContextType {
   }) => ReactNode;
 }
 
-const typeVariants = cva('text-sm text-start text-fd-muted-foreground font-mono', {
-  variants: {
-    variant: {
-      trigger:
-        'underline hover:text-fd-accent-foreground data-[state=open]:text-fd-accent-foreground',
-    },
-  },
-});
+function typeVariants({ variant }: { variant?: 'trigger' } = {}) {
+  return cn(
+    'text-sm text-start text-fd-muted-foreground font-mono',
+    variant === 'trigger' &&
+      'underline hover:text-fd-accent-foreground data-[state=open]:text-fd-accent-foreground',
+  );
+}
 
 const Context = createContext<StateContextType | null>(null);
 

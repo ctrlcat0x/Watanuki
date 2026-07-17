@@ -33,6 +33,9 @@ export default defineConfig({
       '@fastify/deepmerge',
 
       '@scalar/openapi-upgrader',
+      '@jridgewell/sourcemap-codec',
+      '@typescript-eslint/types',
+      'esrap',
 
       // for Vite RSC compatibility
       'xml-js',
