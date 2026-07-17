@@ -1,7 +1,7 @@
 import { watanukiConfig } from '@/lib/watanuki.config';
-import type { WatanukiRssType } from '@watanuki/theme/config';
+import type { WatanukiRssType, WatanukiSeoConfig } from '@watanuki/theme/config';
 
-const seo = watanukiConfig.seo;
+const seo: WatanukiSeoConfig | undefined = watanukiConfig.seo;
 
 export function isOgEnabled(): boolean {
   return seo?.og?.enabled !== false;
@@ -25,7 +25,7 @@ export function isLlmsEnabled(): boolean {
 
 export function isRssEnabled(type?: WatanukiRssType): boolean {
   if (seo?.rss?.enabled === false) return false;
-  if (!type) return seo?.rss?.enabled !== false;
+  if (!type) return true;
   const types = seo?.rss?.types ?? ['blog'];
   return types.includes(type);
 }
