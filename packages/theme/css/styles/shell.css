@@ -1,0 +1,76 @@
+/* Shared 100vh docs shell — independent scroll regions */
+html:has(#nd-docs-layout) {
+  height: 100%;
+}
+
+html:has(#nd-docs-layout) body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#nd-docs-layout {
+  display: grid;
+  height: 100dvh;
+  max-height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+  grid-template:
+    'header header header'
+    'toc-popover toc-popover toc-popover'
+    'sidebar main toc' 1fr
+    / var(--fd-sidebar-col) minmax(0, 1fr) var(--fd-toc-width);
+}
+
+#nd-sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#nd-page {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#nd-page::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+#nd-toc {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Hide native + custom scrollbars in docs shell */
+#nd-docs-layout,
+#nd-docs-layout * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#nd-docs-layout ::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+#nd-sidebar [data-orientation='vertical'].select-none {
+  display: none !important;
+}
+
+/* Collapsed desktop hover peek — restore panel chrome when style skins hide it */
+@variant lg {
+  html[data-watanuki-style] #nd-sidebar[data-collapsed='true'][data-hovered='true'] {
+    background: var(--color-fd-background) !important;
+    border: 1px solid var(--color-fd-border) !important;
+    border-radius: 0.75rem;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+}

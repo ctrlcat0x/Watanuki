@@ -1,0 +1,24 @@
+html[data-watanuki-theme='oscurange'] {
+  color-scheme: dark;
+  --color-fd-background: hsl(240, 15%, 5%);
+  --color-fd-foreground: hsl(0, 0%, 90%);
+  --color-fd-muted: hsl(240, 15%, 2%);
+  --color-fd-muted-foreground: hsl(0, 0%, 68%);
+  --color-fd-popover: hsl(240, 15%, 0%);
+  --color-fd-popover-foreground: hsl(0, 0%, 90%);
+  --color-fd-card: hsl(240, 15%, 3%);
+  --color-fd-card-foreground: hsl(0, 0%, 90%);
+  --color-fd-border: hsl(240, 10%, 17%);
+  --color-fd-primary: hsl(25, 90%, 76%);
+  --color-fd-primary-foreground: hsl(240, 15%, 3%);
+  --color-fd-secondary: hsl(240, 15%, 11%);
+  --color-fd-secondary-foreground: hsl(0, 0%, 90%);
+  --color-fd-accent: hsl(240, 10%, 19%);
+  --color-fd-accent-foreground: hsl(0, 0%, 90%);
+  --color-fd-ring: hsl(25, 90%, 76%);
+}
+
+html[data-watanuki-theme='oscurange'] #nd-sidebar {
+  --color-fd-secondary: hsl(240, 15%, 11%);
+  --color-fd-muted: hsl(240, 15%, 2%);
+}

@@ -1,0 +1,150 @@
+---
+title: Migrate from Nextra
+description: Concept mapping from Nextra docs themes to Watanuki layouts and features.
+---
+
+Nextra and Watanuki both use MDX and file-based routing, but Watanuki splits concerns across packages and uses an explicit source loader instead of Nextra's `theme.config` + `_meta` files.
+
+## Concept mapping
+
+| Nextra | Watanuki |
+| --- | --- |
+| `pages/docs/*.mdx` | `content/docs/*.mdx` |
+| `_meta.json` / `_meta.ts` | `content/docs/meta.json` |
+| `theme.config.tsx` | `lib/watanuki.config.ts` + `lib/layout.shared.tsx` |
+| `nextra-theme-docs` layout | `@watanuki/ui/layouts/docs` |
+| Pagefind (postbuild search) | Orama static export → `/static.json` |
+| `next-sitemap` | `@watanuki/core/source/sitemap` + `/sitemap.xml` route |
+| `getStaticProps` for MDX | Source loader (`@watanuki/core/source`) |
+
+## 1. Scaffold
+
+```bash
+pnpm create watanuki my-docs --template next --search static --style classic
+```
+
+## 2. Move content
+
+Copy MDX files from `pages/` (or `content/`) into `content/docs/`.
+
+Nextra frontmatter maps directly:
+
+```mdx
+---
+title: My Page
+description: Page description
+---
+```
+
+Convert Nextra `_meta.json` to Watanuki `meta.json`:
+
+```json
+// Nextra _meta.json
+{ "index": "Introduction", "guide": "Guide" }
+
+// Watanuki meta.json
+{
+  "title": "Documentation",
+  "pages": ["index", "guide"]
+}
+```
+
+Folder titles go in a nested `meta.json` inside the folder, same as Nextra 3.
+
+## 3. Replace theme config
+
+Nextra `theme.config.tsx`:
+
+```tsx
+export default {
+  logo: <span>My Docs</span>,
+  project: { link: 'https://github.com/org/repo' },
+};
+```
+
+Watanuki uses shared layout options:
+
+```ts
+// lib/layout.shared.tsx
+export function baseOptions() {
+  return {
+    nav: {
+      title: 'My Docs',
+    },
+    githubUrl: 'https://github.com/org/repo',
+  };
+}
+```
+
+Layout style (sidebar shape, content shell) lives in `watanuki.config.ts`:
+
+```ts
+export const watanukiConfig = defineConfig({
+  style: 'classic',
+  defaultTheme: 'dark',
+});
+```
+
+## 4. Search (Pagefind → local fuzzy)
+
+Nextra 3 uses Pagefind after `next build`. Watanuki uses pre-rendered Orama indexes with client-side fuzzy:
+
+```ts
+// lib/watanuki.config.ts
+search: {
+  provider: 'local',
+}
+```
+
+`create-watanuki --search local` adds the `/static.json` export route. No postbuild CLI step — indexes are generated during the Next.js build.
+
+## 5. Sitemap
+
+Instead of `next-sitemap` config:
+
+```ts
+// app/sitemap.xml/route.ts
+import { source } from '@/lib/source';
+import { sitemap } from '@watanuki/core/source/sitemap';
+
+export function GET() {
+  return new Response(
+    sitemap(source, { siteUrl: 'https://example.com' }).xml(),
+    { headers: { 'Content-Type': 'application/xml' } },
+  );
+}
+```
+
+## 6. MDX components
+
+Nextra built-ins (`Callout`, `Tabs`, `Steps`) map to `@watanuki/ui/mdx` components. Register them in `components/mdx.tsx`:
+
+```tsx
+import defaultMdxComponents from '@watanuki/ui/mdx';
+import * as Files from '@watanuki/ui/mdx/files';
+
+export const mdxComponents = {
+  ...defaultMdxComponents,
+  Files,
+};
+```
+
+## 7. i18n
+
+Nextra i18n routing maps to `@watanuki/core/i18n` middleware + loader `i18n` option. See the `apps/docs` i18n setup in the monorepo for a full example.
+
+## What you gain
+
+- Explicit source loader for search, sitemaps, and LLM exports
+- Static search without Pagefind WASM bundle
+- Three layout skins from one config variable
+- TanStack Start and Waku templates from the same CLI
+
+## Checklist
+
+1. `pnpm create watanuki` and copy MDX + meta files
+2. Port `theme.config` into `layout.shared.tsx` + `watanuki.config.ts`
+3. Enable static search (`/static.json`)
+4. Add sitemap route
+5. Replace Nextra MDX imports with `@watanuki/ui/mdx`
+6. `pnpm build`

@@ -1,0 +1,16 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "---Guide---",
+    "index",
+    "getting-started",
+    "---Customize---",
+    "ui",
+    "theming",
+    "components",
+    "---Features---",
+    "search",
+    "sitemap",
+    "(migrate)"
+  ]
+}

@@ -1,0 +1,7 @@
+@import './lib/base.css';
+@import './lib/shiki.css';
+
+@plugin '@watanuki/tailwind/typography';
+
+@import './generated/docs.css';
+@import './generated/shared.css';

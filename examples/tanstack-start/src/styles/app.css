@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@import '@watanuki/theme/styles.css';
+@import '@watanuki/ui/style.css';
+
+html {
+  scrollbar-gutter: stable;
+}

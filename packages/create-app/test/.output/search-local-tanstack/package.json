@@ -1,0 +1,42 @@
+{
+  "name": "search-local-tanstack",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite preview",
+    "preview": "vite preview",
+    "types:check": "watanuki-mdx && tsc --noEmit",
+    "postinstall": "watanuki-mdx"
+  },
+  "dependencies": {
+    "@orama/core": "^1.2.19",
+    "@tanstack/react-router": "1.170.16",
+    "@tanstack/react-router-devtools": "1.167.0",
+    "@tanstack/react-start": "1.168.26",
+    "@watanuki/core": "16.10.7",
+    "@watanuki/mdx": "15.0.13",
+    "@watanuki/theme": "0.1.0",
+    "@watanuki/ui": "16.10.7",
+    "cnfast": "^0.0.8",
+    "lucide-react": "^1.21.0",
+    "motion": "^12.41.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "nitro": "3.0.260610-beta",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.0"
+  }
+}

@@ -1,0 +1,79 @@
+/* Classic — muted sidebar, main + TOC on background, 3-column grid */
+html[data-watanuki-style='classic'] {
+  --wt-sidebar-width: 272px;
+  --wt-header-height: 56px;
+  --wt-motion-spring: 0.3s ease;
+}
+
+html[data-watanuki-style='classic'] #nd-docs-layout {
+  background: var(--color-fd-background);
+  grid-template:
+    'header header header'
+    'toc-popover toc-popover toc-popover'
+    'sidebar main toc' 1fr
+    / var(--fd-sidebar-col) minmax(0, 1fr) var(--fd-toc-width) !important;
+}
+
+html[data-watanuki-style='classic'] #nd-sidebar {
+  background: var(--color-fd-muted);
+  border: none;
+  /* visible separator — default --color-fd-border is too faint in dark */
+  border-inline-end: 1px solid
+    color-mix(in oklab, var(--color-fd-foreground) 14%, transparent);
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+html[data-watanuki-style='classic'] #nd-sidebar > div:first-child {
+  border-bottom: none;
+  background: transparent;
+}
+
+html[data-watanuki-style='classic'] #nd-page {
+  background: var(--color-fd-background);
+  transition: padding-inline-start var(--wt-motion-spring);
+}
+
+html[data-watanuki-style='classic'] #nd-docs-layout[data-sidebar-collapsed='true'] #nd-page {
+  padding-inline-start: calc(var(--spacing) * 8);
+}
+
+html[data-watanuki-style='classic'] #nd-page::before {
+  content: none;
+}
+
+html[data-watanuki-style='classic'] #nd-toc {
+  background: var(--color-fd-background);
+}
+
+html[data-watanuki-style='classic'] #nd-sidebar [data-search-full],
+html[data-watanuki-style='classic'] #nd-sidebar [data-language-select],
+html[data-watanuki-style='classic'] #nd-sidebar [data-theme-select] {
+  background: color-mix(in oklab, var(--color-fd-background) 88%, var(--color-fd-card) 12%);
+  border-color: color-mix(in oklab, var(--color-fd-border) 90%, var(--color-fd-foreground) 10%);
+}
+
+html[data-watanuki-style='classic'] #nd-sidebar [data-search-full] kbd {
+  background: color-mix(in oklab, var(--color-fd-background) 94%, var(--color-fd-muted) 6%);
+}
+
+@variant lg {
+  html[data-watanuki-style='classic'] [data-sidebar-panel] {
+    position: absolute;
+    grid-area: main;
+    align-self: start;
+    justify-self: start;
+    inset-block-start: calc(var(--fd-docs-row-3) + var(--spacing) * 4);
+    inset-inline-start: calc(var(--spacing) * 6);
+    z-index: 20;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing);
+    padding: var(--spacing);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}

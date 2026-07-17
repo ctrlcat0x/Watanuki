@@ -1,0 +1,121 @@
+---
+title: Search
+description: Configure local fuzzy, Algolia, or Orama Cloud search for Watanuki docs.
+icon: Search
+---
+
+## Provider model
+
+Search is configured in `watanuki.config.ts` under `search`.
+
+```ts
+import { defineConfig } from '@watanuki/theme/config';
+
+export const watanukiConfig = defineConfig({
+  search: {
+    provider: 'local',
+  },
+});
+```
+
+Supported providers: `local`, `algolia`, `orama`.
+
+## Local (recommended)
+
+Local search prebuilds an Orama index at `/static.json` and runs fuzzy search in the browser — no runtime API route.
+
+**When to use:** default for almost every docs site (static exports, edge, Node, GitHub Pages).
+
+### 1. Export indexes
+
+```ts
+// lib/export-search-indexes.ts
+import { source } from '@/lib/source';
+import { exportSearchIndexes } from '@watanuki/core/search/server';
+
+export async function exportSearchIndexesFromSource() {
+  return exportSearchIndexes(source, { language: 'english' });
+}
+```
+
+### 2. Serve the index
+
+```ts
+// app/static.json/route.ts
+import { exportSearchIndexesFromSource } from '@/lib/export-search-indexes';
+
+export const revalidate = false;
+
+export async function GET() {
+  return Response.json(await exportSearchIndexesFromSource());
+}
+```
+
+For TanStack Start, add the route and prerender `/static.json` in `vite.config.ts`. `create-watanuki --search local` scaffolds this automatically.
+
+### 3. Config
+
+```ts
+search: {
+  provider: 'local',
+  // optional — defaults to /static.json
+  // api: '/static.json',
+}
+```
+
+### i18n
+
+For locales Orama does not stem (e.g. `ja`), map them in `localeMap`:
+
+```ts
+exportSearchIndexes(source, {
+  language: 'english',
+  localeMap: {
+    ja: { language: 'english' },
+  },
+});
+```
+
+Indexes stay per-locale; tokenization falls back to English.
+
+## Algolia
+
+For large public docs with hosted ranking:
+
+```ts
+search: {
+  provider: 'algolia',
+  appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
+  apiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!,
+  indexName: 'watanuki-docs',
+}
+```
+
+## Orama Cloud
+
+For managed search without self-hosting indexes:
+
+```ts
+search: {
+  provider: 'orama',
+  projectId: process.env.NEXT_PUBLIC_ORAMA_PROJECT_ID!,
+  apiKey: process.env.NEXT_PUBLIC_ORAMA_API_KEY!,
+}
+```
+
+## UI behavior
+
+The search dialog supports:
+
+- keyboard shortcut (`⌘K` / `Ctrl+K`)
+- highlighted title and content matches
+- provider-specific rendering (local, Algolia, Orama)
+- responsive sidebar trigger
+
+## Recommendation
+
+| Scenario | Provider |
+| --- | --- |
+| Default / static / edge | `local` |
+| Large public docs | Algolia |
+| Managed hosted search | Orama Cloud |

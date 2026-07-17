@@ -1,0 +1,57 @@
+{
+  "name": "@watanuki/typescript",
+  "version": "0.1.0",
+  "description": "Generate TypeTable data from TypeScript types for Watanuki docs",
+  "keywords": [
+    "Docs",
+    "Watanuki",
+    "TypeScript",
+    "AutoTypeTable"
+  ],
+  "homepage": "https://watanuki.dev",
+  "license": "MIT",
+  "author": "ctrlcat0x",
+  "repository": "github:ctrlcat0x/Watanuki",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./ui": "./dist/ui/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf dist",
+    "dev": "tsdown --watch",
+    "lint": "oxlint .",
+    "types:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ts-morph": "^28.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
+    "@watanuki/ui": "workspace:*",
+    "rimraf": "^6.1.3",
+    "tsconfig": "workspace:*",
+    "tsdown": "0.22.3",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "@types/react": "*",
+    "@watanuki/ui": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  }
+}

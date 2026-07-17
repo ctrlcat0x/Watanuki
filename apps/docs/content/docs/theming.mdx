@@ -1,0 +1,75 @@
+---
+title: Theming
+description: Control layout skin, color theme, and table of contents style.
+icon: Palette
+---
+
+## Layout style
+
+The main Watanuki visual decision is `style`.
+
+```ts
+style: 'classic'
+```
+
+### classic
+
+- muted sidebar
+- content sits on background
+- straightforward docs shell
+
+### minimal
+
+- quiet outer shell
+- softer inset reading surface
+- lighter framing
+
+### modern
+
+- shell across header and content
+- inset content and TOC area
+- strongest product feel
+
+## Color theme
+
+The runtime theme selector switches the visual palette without changing structure.
+
+```ts
+defaultTheme: 'autumn'
+```
+
+Available themes:
+
+`light`, `dark`, `catppuccin`, `monokai`, `gruvbox-hard`, `gruvbox-soft`, `vercel`, `dracula`, `ayu`, `lobster`, `notion`, `oscurange`, `synthwave`, `winter`, `spring`, `autumn`, `summer`
+
+## TOC style
+
+```ts
+toc: {
+  style: 'clerk',
+}
+```
+
+- `clerk` uses rail + moving indicator
+- `tab` follows the middle visible heading
+- `basic` highlights text only
+
+## Example
+
+```ts
+import { defineConfig } from '@watanuki/theme/config';
+
+export const watanukiConfig = defineConfig({
+  style: 'modern',
+  defaultTheme: 'autumn',
+  toc: {
+    style: 'clerk',
+  },
+});
+```
+
+## Practical advice
+
+- pick one layout style for structure
+- let users switch only color theme
+- use TOC style as a content-reading preference, not branding

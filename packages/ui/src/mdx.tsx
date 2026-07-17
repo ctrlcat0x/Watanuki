@@ -1,0 +1,140 @@
+import Link from '@watanuki/core/link';
+import type React from 'react';
+import type {
+  AnchorHTMLAttributes,
+  FC,
+  HTMLAttributes,
+  ImgHTMLAttributes,
+  TableHTMLAttributes,
+} from 'react';
+import { Card, Cards } from '@/components/card';
+import { Callout, CalloutContainer, CalloutDescription, CalloutTitle } from '@/components/callout';
+import { Heading } from '@/components/heading';
+import { MdxCodeBlock } from '@/components/mdx-codeblock';
+import { cn } from '@/utils/cn';
+import {
+  CodeBlock,
+  CodeBlockTab,
+  CodeBlockTabs,
+  CodeBlockTabsList,
+  CodeBlockTabsTrigger,
+  Pre,
+} from '@/components/codeblock';
+import { File, Files, Folder } from '@/components/files';
+import { GithubInfo } from '@/components/github-info';
+import { TypeTable } from '@/components/type-table';
+import { Stepper, StepperItem, StepperNext, StepperPrev } from '@/components/stepper';
+import { Step, Steps } from '@/components/steps';
+import { Tab, Tabs } from '@/components/tabs';
+import { Terminal } from '@/components/terminal';
+import { Safari, BrowserFrame } from '@/components/safari';
+import { SideBySideSlide, ImageCompare } from '@/components/image-compare';
+import { ComparisonTable } from '@/components/comparison-table';
+import { HoverCard, Glimpse, GlimpseCard } from '@/components/hover-card';
+import { Media } from '@/components/media';
+import { YouTube } from '@/components/youtube';
+import { ImageZoom } from '@/components/image-zoom';
+import { Accordion, Accordions, BouncyAccordion } from '@/components/accordion';
+import { Mermaid, MermaidDiagram } from '@/components/mermaid';
+import { TweetCard } from '@/components/tweet-card';
+import { Timeline, TimelineItem } from '@/components/timeline';
+
+/**
+ * global types for MDX.js
+ */
+declare module 'mdx/types.js' {
+  // Augment the MDX types to make it understand React.
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    type Element = React.JSX.Element;
+    type ElementClass = React.JSX.ElementClass;
+    type ElementType = React.JSX.ElementType;
+    type IntrinsicElements = React.JSX.IntrinsicElements;
+  }
+}
+
+function Image(props: ImgHTMLAttributes<HTMLImageElement>) {
+  return (
+    <ImageZoom
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 900px"
+      {...props}
+      src={typeof props.src === 'string' ? props.src : undefined}
+      className={cn('rounded-lg', props.className)}
+    />
+  );
+}
+
+function Table(props: TableHTMLAttributes<HTMLTableElement>) {
+  return (
+    <div className="relative overflow-auto prose-no-margin my-6">
+      <table {...props} />
+    </div>
+  );
+}
+
+const defaultMdxComponents = {
+  CodeBlockTab,
+  CodeBlock: MdxCodeBlock,
+  CodeBlockTabs,
+  CodeBlockTabsList,
+  CodeBlockTabsTrigger,
+  pre: (props: HTMLAttributes<HTMLPreElement>) => (
+    <CodeBlock {...props}>
+      <Pre>{props.children}</Pre>
+    </CodeBlock>
+  ),
+  Card,
+  Cards,
+  Files,
+  File,
+  Folder,
+  GithubInfo,
+  a: Link as FC<AnchorHTMLAttributes<HTMLAnchorElement>>,
+  img: Image,
+  h1: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading as="h1" {...props} />,
+  h2: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading as="h2" {...props} />,
+  h3: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading as="h3" {...props} />,
+  h4: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading as="h4" {...props} />,
+  h5: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading as="h5" {...props} />,
+  h6: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading as="h6" {...props} />,
+  table: Table,
+  TypeTable,
+  Callout,
+  CalloutContainer,
+  CalloutTitle,
+  CalloutDescription,
+  Steps,
+  Step,
+  Stepper,
+  StepperItem,
+  StepperPrev,
+  StepperNext,
+  Tabs,
+  Tab,
+  Terminal,
+  Safari,
+  BrowserFrame,
+  SideBySideSlide,
+  ImageCompare,
+  ComparisonTable,
+  HoverCard,
+  Glimpse,
+  GlimpseCard,
+  Media,
+  YouTube,
+  ImageZoom,
+  Accordion,
+  Accordions,
+  BouncyAccordion,
+  Mermaid,
+  MermaidDiagram,
+  TweetCard,
+  Timeline,
+  TimelineItem,
+};
+
+export const createRelativeLink: typeof import('./mdx.server').createRelativeLink = () => {
+  throw new Error('`createRelativeLink` is only supported in Node.js environment');
+};
+
+export { defaultMdxComponents as default };

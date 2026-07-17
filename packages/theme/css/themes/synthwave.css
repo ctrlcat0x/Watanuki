@@ -1,0 +1,24 @@
+html[data-watanuki-theme='synthwave'] {
+  color-scheme: dark;
+  --color-fd-background: hsl(280, 45%, 12%);
+  --color-fd-foreground: hsl(320, 80%, 90%);
+  --color-fd-muted: hsl(280, 40%, 16%);
+  --color-fd-muted-foreground: hsl(300, 30%, 70%);
+  --color-fd-popover: hsl(280, 45%, 10%);
+  --color-fd-popover-foreground: hsl(320, 80%, 90%);
+  --color-fd-card: hsl(280, 40%, 14%);
+  --color-fd-card-foreground: hsl(320, 80%, 90%);
+  --color-fd-border: hsl(290, 35%, 28%);
+  --color-fd-primary: hsl(320, 100%, 65%);
+  --color-fd-primary-foreground: hsl(280, 45%, 12%);
+  --color-fd-secondary: hsl(280, 35%, 20%);
+  --color-fd-secondary-foreground: hsl(320, 80%, 90%);
+  --color-fd-accent: hsl(190, 100%, 55%);
+  --color-fd-accent-foreground: hsl(280, 45%, 12%);
+  --color-fd-ring: hsl(320, 100%, 65%);
+}
+
+html[data-watanuki-theme='synthwave'] #nd-sidebar {
+  --color-fd-secondary: hsl(280, 35%, 20%);
+  --color-fd-muted: hsl(280, 40%, 16%);
+}

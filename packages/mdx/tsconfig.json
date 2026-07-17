@@ -1,0 +1,27 @@
+{
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["@types/node", "@types/mdx"],
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "target": "ES2020"
+  },
+  "exclude": [
+    "node_modules",
+    "eslint.config.mjs",
+    "dist",
+    "test",
+    "vitest.config.ts",
+    "src/config/build-satteri.ts",
+    "src/config/satteri",
+    "src/loaders/mdx/build-satteri-mdx.ts",
+    "src/loaders/mdx/remark-include-satteri.ts",
+    "src/loaders/mdx/satteri-data-map.ts",
+    "src/satteri"
+  ]
+}

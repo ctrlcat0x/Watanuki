@@ -1,0 +1,24 @@
+html[data-watanuki-theme='vercel'] {
+  color-scheme: dark;
+  --color-fd-background: hsl(0, 0%, 0%);
+  --color-fd-foreground: hsl(0, 0%, 93%);
+  --color-fd-muted: hsl(0, 0%, 7%);
+  --color-fd-muted-foreground: hsl(0, 0%, 63%);
+  --color-fd-popover: hsl(0, 0%, 4%);
+  --color-fd-popover-foreground: hsl(0, 0%, 93%);
+  --color-fd-card: hsl(0, 0%, 4%);
+  --color-fd-card-foreground: hsl(0, 0%, 93%);
+  --color-fd-border: hsl(0, 0%, 18%);
+  --color-fd-primary: hsl(0, 0%, 98%);
+  --color-fd-primary-foreground: hsl(0, 0%, 0%);
+  --color-fd-secondary: hsl(0, 0%, 10%);
+  --color-fd-secondary-foreground: hsl(0, 0%, 93%);
+  --color-fd-accent: hsl(0, 0%, 14%);
+  --color-fd-accent-foreground: hsl(0, 0%, 93%);
+  --color-fd-ring: hsl(0, 0%, 50%);
+}
+
+html[data-watanuki-theme='vercel'] #nd-sidebar {
+  --color-fd-secondary: hsl(0, 0%, 10%);
+  --color-fd-muted: hsl(0, 0%, 7%);
+}

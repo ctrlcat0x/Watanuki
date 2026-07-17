@@ -1,0 +1,109 @@
+---
+title: UI
+description: Layout skins, navigation pieces, and MDX primitives in Watanuki UI.
+icon: LayoutTemplate
+---
+
+## Layout system
+
+`@watanuki/ui` ships docs layouts that already understand page trees, i18n, search, and metadata hooks.
+
+- sidebar navigation
+- sticky TOC
+- responsive mobile panels
+- page actions
+- edit-on-git providers
+
+## MDX primitives
+
+The default MDX map already includes:
+
+- callouts
+- cards
+- code groups
+- highlighted code blocks
+- animated file trees
+- expandable type tables
+
+## Highlighted code blocks
+
+Fenced code blocks already use Shiki with Watanuki defaults. That includes notation diff, notation focus, word highlight, meta line highlight (`{1,3}`), and line numbers (`lineNumbers`).
+
+### No header
+
+Copy button floats top-right and appears on hover.
+
+```ts
+export const provider = 'orama';
+```
+
+### Header
+
+```tsx {4} title="Meta line highlight"
+export function SearchTrigger() {
+  return (
+    <button className="rounded-lg border px-3 py-2">
+      Search docs
+    </button>
+  );
+}
+```
+
+```tsx title="Notation focus"
+export function SearchTrigger() {
+  // [!code focus:3]
+  return (
+    <button className="rounded-lg border px-3 py-2">
+      Search docs
+    </button>
+  );
+}
+```
+
+```diff title="Notation diff"
+- export const provider = 'local';
++ export const provider = 'algolia';
+```
+
+```ts title="Notation diff (comment)"
+export const provider = 'local'; // [!code --]
+export const provider = 'algolia'; // [!code ++]
+```
+
+```ts title="Word highlight"
+// [!code word:provider]
+const provider = 'orama';
+```
+
+```ts title="Line numbers" lineNumbers
+function add(a: number, b: number) {
+  return a + b;
+}
+```
+
+See [Components](/docs/components) for the full gallery.
+
+## MDX code block primitive
+
+Use `<CodeBlock />` when the content should be declared as props instead of fenced markdown.
+
+<CodeBlock
+  language="bash"
+  title="Install"
+  code={`pnpm add @watanuki/ui\npnpm add @watanuki/theme`}
+/>
+
+## Navigation behavior
+
+The layout builds:
+
+- sidebar entries from the file tree
+- TOC from page headings
+- page pager links from the current collection order
+- language and theme selectors from runtime config
+
+## Related guides
+
+- [Theming](/docs/theming)
+- [Search](/docs/search)
+- [Components](/docs/components)

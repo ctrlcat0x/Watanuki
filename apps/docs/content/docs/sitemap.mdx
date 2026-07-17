@@ -1,0 +1,112 @@
+---
+title: Sitemap & SEO
+description: Automatic sitemap, robots.txt, RSS, OG images, and structured data from watanuki.config.
+icon: Map
+---
+
+Toggle SEO features from `lib/watanuki.config.ts`:
+
+```ts
+export const watanukiConfig = {
+  // ...
+  seo: {
+    og: { enabled: true },
+    rss: { enabled: true, types: ['blog'] },
+    sitemap: true,
+    robots: true,
+    structuredData: true,
+    llms: true,
+    x: { handle: '@acme' },
+  },
+} satisfies WatanukiConfig;
+```
+
+| Flag | Route / effect |
+| --- | --- |
+| `sitemap` | `/sitemap.xml` |
+| `robots` | `/robots.txt` (points at sitemap when enabled) |
+| `rss` | `/blog/rss.xml` (and changelog when `types` includes it) |
+| `og.enabled` | `/og/docs/...` + `openGraph` / `twitter` images |
+| `structuredData` | JSON-LD (`WebSite`, `TechArticle`, `BlogPosting`) |
+| `llms` | `/llms.txt`, `/llms-full.txt` |
+| `x.handle` | `twitter:creator` / `twitter:site` |
+
+## Sitemap route
+
+```ts
+// app/sitemap.xml/route.ts
+import { source } from '@/lib/source';
+import { sitemap } from '@watanuki/core/source/sitemap';
+
+export const revalidate = false;
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com';
+
+export function GET() {
+  const xml = sitemap(source, { siteUrl }).xml();
+
+  return new Response(xml, {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8',
+    },
+  });
+}
+```
+
+Set `NEXT_PUBLIC_SITE_URL` to your production origin. The helper turns relative page URLs into absolute `<loc>` values.
+
+## Options
+
+```ts
+sitemap(source, {
+  siteUrl: 'https://example.com',
+  changefreq: 'weekly',   // default
+  priority: 0.5,          // default
+  lastModified: (page) => page.data.lastModified, // optional
+}).xml();
+```
+
+Enable `@watanuki/mdx` last-modified plugin in `source.config.ts` to populate `<lastmod>` from git history:
+
+```ts
+import lastModified from '@watanuki/mdx/plugins/last-modified';
+
+export default defineConfig({
+  mdxOptions: {
+    remarkPlugins: [lastModified()],
+  },
+});
+```
+
+## robots.txt
+
+```ts
+import { robots } from '@watanuki/core/source/robots';
+
+robots({ siteUrl, sitemap: true }).text();
+```
+
+## RSS
+
+```ts
+import { rss } from '@watanuki/core/source/rss';
+
+rss({
+  siteUrl,
+  title: 'Blog',
+  items: blogSource.getPages().map((page) => ({
+    title: page.data.title,
+    description: page.data.description,
+    url: page.url,
+    date: page.data.date,
+  })),
+}).xml();
+```
+
+## i18n
+
+For localized sites, call `.xml('en')` or `.xml('ja')` with a language code to include only pages for that locale.
+
+## Multiple collections
+
+If your loader combines collections (docs + blog + OpenAPI), `getPages()` returns all of them. Filter in `lastModified` or split loaders if you need separate sitemaps.

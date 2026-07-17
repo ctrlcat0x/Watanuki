@@ -1,0 +1,24 @@
+html[data-watanuki-theme='notion'] {
+  color-scheme: dark;
+  --color-fd-background: hsl(0, 0%, 10%);
+  --color-fd-foreground: hsl(60, 1%, 85%);
+  --color-fd-muted: hsl(0, 0%, 7%);
+  --color-fd-muted-foreground: hsl(60, 0%, 64%);
+  --color-fd-popover: hsl(0, 0%, 5%);
+  --color-fd-popover-foreground: hsl(60, 1%, 85%);
+  --color-fd-card: hsl(0, 0%, 8%);
+  --color-fd-card-foreground: hsl(60, 1%, 85%);
+  --color-fd-border: hsl(0, 0%, 22%);
+  --color-fd-primary: hsl(211, 68%, 52%);
+  --color-fd-primary-foreground: hsl(0, 0%, 8%);
+  --color-fd-secondary: hsl(0, 0%, 16%);
+  --color-fd-secondary-foreground: hsl(60, 1%, 85%);
+  --color-fd-accent: hsl(0, 0%, 24%);
+  --color-fd-accent-foreground: hsl(60, 1%, 85%);
+  --color-fd-ring: hsl(211, 68%, 52%);
+}
+
+html[data-watanuki-theme='notion'] #nd-sidebar {
+  --color-fd-secondary: hsl(0, 0%, 16%);
+  --color-fd-muted: hsl(0, 0%, 7%);
+}

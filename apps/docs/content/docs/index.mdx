@@ -1,0 +1,67 @@
+---
+title: Welcome to Watanuki
+description: Opinionated docs infrastructure with one-variable layout styling.
+icon: BookOpen
+---
+
+Watanuki is a documentation stack shaped for product teams that want fast setup, strong defaults, and fewer moving parts than a full Fumadocs install.
+
+## What ships in core
+
+- MDX-first authoring with file-based routing
+- Generated sidebar, breadcrumbs, next/previous links, and table of contents
+- Search providers for local indexes, Algolia, and Orama
+- Theme skins controlled by one layout variable
+- Base UI primitives with Motion-driven interaction polish
+- OpenAPI-ready docs pages and dynamic metadata helpers
+
+## Core packages
+
+- `@watanuki/core` handles loading, routing, metadata, MDX transforms, and highlight pipeline
+- `@watanuki/ui` provides docs layouts, MDX primitives, and navigation UI
+- `@watanuki/theme` owns layout skins, color themes, and TOC presentation
+- `@watanuki/openapi` renders API reference pages in the same visual system
+- `create-watanuki` scaffolds new docs projects with the Watanuki defaults
+
+## Choose a layout skin
+
+Set `style` in `lib/watanuki.config.ts`.
+
+```ts
+import { defineConfig } from '@watanuki/theme/config';
+
+export const watanukiConfig = defineConfig({
+  style: 'modern',
+});
+```
+
+- `classic` keeps content on the page background with a muted sidebar
+- `minimal` uses a softer inset reading surface
+- `modern` builds a shared inset shell for content and TOC
+
+## Choose a TOC style
+
+Set `toc.style` in `lib/watanuki.config.ts`.
+
+```ts
+import { defineConfig } from '@watanuki/theme/config';
+
+export const watanukiConfig = defineConfig({
+  toc: {
+    style: 'clerk',
+  },
+});
+```
+
+- `clerk` uses a guided rail with a moving indicator
+- `tab` tracks the middle visible heading with a compact follower
+- `basic` highlights only the active item text
+
+## What to read next
+
+- Start with [Getting Started](/docs/getting-started) for project setup
+- Read [UI](/docs/ui) for layout and MDX primitives
+- Read [Search](/docs/search) for provider options
+- Read [Sitemap](/docs/sitemap) for SEO XML generation
+- Migrating? See [Fumadocs](/docs/migration-from-fumadocs) or [Nextra](/docs/migration-from-nextra)
+- Read [Theming](/docs/theming) for style and color control

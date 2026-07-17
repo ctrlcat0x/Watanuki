@@ -1,0 +1,22 @@
+export {
+  WATANUKI_STYLES,
+  WATANUKI_THEMES,
+  WATANUKI_DARK_THEMES,
+  WATANUKI_TOC_STYLES,
+  WATANUKI_SEARCH_PROVIDERS,
+  THEME_LABELS,
+  THEME_ACCENTS,
+  defaultConfig,
+  defineConfig,
+  isDarkTheme,
+  type WatanukiStyle,
+  type WatanukiTheme,
+  type WatanukiThemeConfig,
+  type WatanukiTOCStyle,
+  type WatanukiSearchProvider,
+  type WatanukiSearchConfig,
+  type WatanukiSeoConfig,
+  type WatanukiRssType,
+  type WatanukiConfig,
+} from './config';
+export { getThemeInitScript } from './theme-init';

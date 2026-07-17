@@ -1,0 +1,161 @@
+---
+title: Getting Started
+description: Create a Watanuki docs project, configure source loading, and ship your first page.
+icon: Rocket
+---
+
+## 1. Scaffold a project
+
+```bash
+pnpm create watanuki
+```
+
+`create-watanuki` (package name: `create-watanuki`) walks you through:
+
+- **Framework** — Next.js (recommended), TanStack Start, or Waku
+- **Layout style** — `classic`, `minimal`, or `modern`
+- **Search** — static Orama indexes (recommended), local API, Algolia, or Orama Cloud
+
+Non-interactive example:
+
+```bash
+pnpm create watanuki my-docs --template next --style classic --search static --install
+```
+
+## 2. Install and run
+
+```bash
+cd my-docs
+pnpm install   # skip if you passed --install
+pnpm dev
+```
+
+Docs are served at `/docs` by default.
+
+## 3. Understand the layout
+
+<Files>
+  <Folder name="project" defaultOpen>
+    <Folder name="app" defaultOpen>
+      <Folder name="docs" defaultOpen>
+        <Folder name="[[...slug]]" defaultOpen>
+          <File name="page.tsx" />
+        </Folder>
+        <File name="layout.tsx" />
+      </Folder>
+      <File name="layout.tsx" />
+      <File name="static.json/route.ts" />
+      <File name="sitemap.xml/route.ts" />
+    </Folder>
+    <Folder name="content" defaultOpen>
+      <Folder name="docs" defaultOpen>
+        <File name="meta.json" />
+        <File name="index.mdx" />
+      </Folder>
+    </Folder>
+    <Folder name="lib" defaultOpen>
+      <File name="source.ts" />
+      <File name="watanuki.config.ts" />
+      <File name="export-search-indexes.ts" />
+    </Folder>
+    <File name="source.config.ts" />
+  </Folder>
+</Files>
+
+TanStack Start and Waku templates mirror this under `src/`.
+
+## 4. Configure the theme
+
+`lib/watanuki.config.ts` controls layout, search, and SEO — not user-facing theme toggles.
+
+```ts
+import { defineConfig } from '@watanuki/theme/config';
+
+export const watanukiConfig = defineConfig({
+  style: 'classic',
+  defaultTheme: 'dark',
+  toc: {
+    style: 'tab',
+  },
+  search: {
+    provider: 'local',
+  },
+  seo: {
+    og: { enabled: true },
+    rss: { enabled: true, types: ['blog'] },
+    sitemap: true,
+    robots: true,
+    structuredData: true,
+    llms: true,
+    x: { handle: '@acme' },
+  },
+});
+```
+
+Packages involved:
+
+| Package | Role |
+| --- | --- |
+| `@watanuki/core` | Source loader, search server, MDX plugins, metadata |
+| `@watanuki/ui` | Docs layouts, navigation, search dialog |
+| `@watanuki/theme` | Style presets, color themes, TOC variants |
+| `@watanuki/mdx` | MDX compilation and collection config |
+| `create-watanuki` | Project scaffolding CLI |
+
+## 5. Author your first page
+
+Create `content/docs/quick-start.mdx`:
+
+```mdx
+---
+title: Quick Start
+description: Your first Watanuki page.
+---
+
+# Quick Start
+
+Write in MDX. Navigation is file-based via `meta.json`.
+```
+
+Add it to `content/docs/meta.json`:
+
+```json
+{
+  "title": "Documentation",
+  "pages": ["index", "getting-started", "quick-start"]
+}
+```
+
+## 6. Wire the source loader
+
+`source.config.ts` defines collections and frontmatter validation.
+
+`lib/source.ts` creates the loader used by layouts, search, sitemaps, and `llms.txt`:
+
+```ts
+import { docs } from 'collections/server';
+import { loader } from '@watanuki/core/source';
+import { toWatanukiSource } from '@watanuki/mdx/runtime/server';
+
+export const source = loader({
+  baseUrl: '/docs',
+  source: toWatanukiSource(docs, []),
+});
+```
+
+## 7. Build for production
+
+```bash
+pnpm build
+```
+
+With local search, indexes are pre-rendered to `/static.json` — works on static hosts and edge deploys without a runtime API route.
+
+## Next steps
+
+- [Search](/docs/search) — static, API, Algolia, and Orama Cloud
+- [Sitemap](/docs/sitemap) — generate `sitemap.xml` from your source
+- [Migrate from Fumadocs](/docs/migration-from-fumadocs)
+- [Migrate from Nextra](/docs/migration-from-nextra)
+- [UI](/docs/ui) — layouts and MDX components
+- [Theming](/docs/theming) — skins and color themes

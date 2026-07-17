@@ -1,0 +1,45 @@
+import type { BunPlugin } from 'bun';
+import { createMdxLoader } from '@/loaders/mdx';
+import { buildConfig } from '@/config/build';
+import { pathToFileURL } from 'node:url';
+import { _Defaults, type CoreOptions, createCore } from '@/core';
+import { createIntegratedConfigLoader } from '@/loaders/config';
+import { createMetaLoader } from '@/loaders/meta';
+import { toBun } from '@/loaders/adapter';
+import { mdxLoaderGlob, metaLoaderGlob } from '@/loaders';
+
+export interface MdxPluginOptions extends Partial<CoreOptions> {
+  /**
+   * Skip meta file transformation step
+   */
+  disableMetaFile?: boolean;
+}
+
+export function createMdxPlugin(options: MdxPluginOptions = {}): BunPlugin {
+  const {
+    environment = 'bun',
+    outDir = _Defaults.outDir,
+    configPath = _Defaults.configPath,
+    disableMetaFile = false,
+  } = options;
+
+  return {
+    name: 'bun-plugin-@watanuki/mdx',
+    async setup(build) {
+      const importPath = pathToFileURL(configPath).href;
+      const core = createCore({
+        environment,
+        outDir,
+        configPath,
+      });
+
+      await core.init({
+        config: buildConfig(await import(importPath), process.cwd()),
+      });
+
+      const configLoader = createIntegratedConfigLoader(core);
+      toBun(mdxLoaderGlob, createMdxLoader(configLoader))(build);
+      if (!disableMetaFile) toBun(metaLoaderGlob, createMetaLoader(configLoader))(build);
+    },
+  };
+}

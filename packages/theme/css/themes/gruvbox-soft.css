@@ -1,0 +1,24 @@
+html[data-watanuki-theme='gruvbox-soft'] {
+  color-scheme: light;
+  --color-fd-background: hsl(48, 87%, 88%);
+  --color-fd-foreground: hsl(0, 0%, 16%);
+  --color-fd-muted: hsl(48, 52%, 82%);
+  --color-fd-muted-foreground: hsl(0, 0%, 35%);
+  --color-fd-popover: hsl(48, 87%, 92%);
+  --color-fd-popover-foreground: hsl(0, 0%, 16%);
+  --color-fd-card: hsl(48, 70%, 90%);
+  --color-fd-card-foreground: hsl(0, 0%, 16%);
+  --color-fd-border: hsl(48, 30%, 72%);
+  --color-fd-primary: hsl(25, 55%, 42%);
+  --color-fd-primary-foreground: hsl(48, 87%, 94%);
+  --color-fd-secondary: hsl(48, 45%, 85%);
+  --color-fd-secondary-foreground: hsl(0, 0%, 16%);
+  --color-fd-accent: hsl(48, 40%, 78%);
+  --color-fd-accent-foreground: hsl(0, 0%, 16%);
+  --color-fd-ring: hsl(25, 55%, 42%);
+}
+
+html[data-watanuki-theme='gruvbox-soft'] #nd-sidebar {
+  --color-fd-secondary: hsl(48, 45%, 80%);
+  --color-fd-muted: hsl(48, 45%, 80%);
+}

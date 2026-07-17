@@ -1,0 +1,73 @@
+/* Universal compact layout — single main column below lg (1024px) */
+@variant max-lg {
+  html[data-watanuki-style] #nd-docs-layout {
+    --fd-header-height: 0px;
+    --fd-toc-popover-height: 0px;
+    --fd-sidebar-col: 0px;
+    --fd-toc-width: 0px;
+    grid-template: 'main' 1fr / 1fr !important;
+  }
+
+  /* modern: FAB + TOC island; hide top bar */
+  html[data-watanuki-style='modern'] #nd-subnav {
+    display: none;
+  }
+
+  /* classic/minimal: keep mobile header (search + sidebar trigger) */
+  html[data-watanuki-style='classic'] #nd-docs-layout,
+  html[data-watanuki-style='minimal'] #nd-docs-layout {
+    --fd-header-height: calc(var(--spacing) * 14);
+    grid-template:
+      'header' auto
+      'main' 1fr
+      / 1fr !important;
+  }
+
+  html[data-watanuki-style='classic'] #nd-subnav,
+  html[data-watanuki-style='minimal'] #nd-subnav {
+    display: flex;
+  }
+
+  html[data-watanuki-style] [data-sidebar-placeholder] {
+    display: none;
+  }
+
+  html[data-watanuki-style] #nd-toc,
+  html[data-watanuki-style] #nd-toc-placeholder {
+    display: none;
+  }
+
+  html[data-watanuki-style] [data-toc-popover] {
+    display: none;
+  }
+
+  html[data-watanuki-style] [data-sidebar-panel] {
+    display: none;
+  }
+
+  html[data-watanuki-style='modern'] #nd-docs-layout::before {
+    content: none;
+  }
+
+  /* modern floating chrome needs space; classic/minimal use in-flow header */
+  html[data-watanuki-style] #nd-page {
+    max-width: none;
+    padding-top: calc(var(--spacing) * 14);
+  }
+
+  html[data-watanuki-style='classic'] #nd-page,
+  html[data-watanuki-style='minimal'] #nd-page {
+    padding-top: calc(var(--spacing) * 6);
+  }
+
+  /* TOC island below header so it does not cover search/sidebar controls */
+  html[data-watanuki-style='classic'] [data-toc-island],
+  html[data-watanuki-style='minimal'] [data-toc-island] {
+    top: calc(var(--fd-header-height) + 0.75rem);
+  }
+
+  /* TOC island sits below mobile sidebar drawer (z-40) */
+  html[data-watanuki-style] [data-toc-island] {
+    z-index: 30;
+  }
+}

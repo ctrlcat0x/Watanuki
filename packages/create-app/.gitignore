@@ -1,0 +1,3 @@
+template
+!template/**/README.md
+!template/**/example.gitignore

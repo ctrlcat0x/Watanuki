@@ -1,0 +1,528 @@
+{
+  "children": [
+    {
+      "attributes": [
+        {
+          "name": "type",
+          "type": "mdxJsxAttribute",
+          "value": "note",
+        },
+      ],
+      "children": [
+        {
+          "attributes": [],
+          "children": [
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 14,
+                      "line": 3,
+                      "offset": 22,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 3,
+                      "offset": 9,
+                    },
+                  },
+                  "type": "text",
+                  "value": "A short note.",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 14,
+                  "line": 3,
+                  "offset": 22,
+                },
+                "start": {
+                  "column": 1,
+                  "line": 3,
+                  "offset": 9,
+                },
+              },
+              "type": "paragraph",
+            },
+          ],
+          "name": "CalloutDescription",
+          "type": "mdxJsxFlowElement",
+        },
+      ],
+      "name": "CalloutContainer",
+      "position": {
+        "end": {
+          "column": 4,
+          "line": 5,
+          "offset": 27,
+        },
+        "start": {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+      },
+      "type": "mdxJsxFlowElement",
+    },
+    {
+      "attributes": [
+        {
+          "name": "type",
+          "type": "mdxJsxAttribute",
+          "value": "tip",
+        },
+      ],
+      "children": [
+        {
+          "attributes": [],
+          "children": [
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 12,
+                      "line": 9,
+                      "offset": 48,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 9,
+                      "offset": 37,
+                    },
+                  },
+                  "type": "text",
+                  "value": "Hello World",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 12,
+                  "line": 9,
+                  "offset": 48,
+                },
+                "start": {
+                  "column": 1,
+                  "line": 9,
+                  "offset": 37,
+                },
+              },
+              "type": "paragraph",
+            },
+          ],
+          "name": "CalloutDescription",
+          "type": "mdxJsxFlowElement",
+        },
+      ],
+      "name": "CalloutContainer",
+      "position": {
+        "end": {
+          "column": 4,
+          "line": 11,
+          "offset": 53,
+        },
+        "start": {
+          "column": 1,
+          "line": 7,
+          "offset": 29,
+        },
+      },
+      "type": "mdxJsxFlowElement",
+    },
+    {
+      "attributes": [
+        {
+          "name": "type",
+          "type": "mdxJsxAttribute",
+          "value": "info",
+        },
+      ],
+      "children": [
+        {
+          "attributes": [],
+          "children": [
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 20,
+                      "line": 15,
+                      "offset": 83,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 15,
+                      "offset": 64,
+                    },
+                  },
+                  "type": "text",
+                  "value": "Useful information.",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 20,
+                  "line": 15,
+                  "offset": 83,
+                },
+                "start": {
+                  "column": 1,
+                  "line": 15,
+                  "offset": 64,
+                },
+              },
+              "type": "paragraph",
+            },
+          ],
+          "name": "CalloutDescription",
+          "type": "mdxJsxFlowElement",
+        },
+      ],
+      "name": "CalloutContainer",
+      "position": {
+        "end": {
+          "column": 4,
+          "line": 17,
+          "offset": 88,
+        },
+        "start": {
+          "column": 1,
+          "line": 13,
+          "offset": 55,
+        },
+      },
+      "type": "mdxJsxFlowElement",
+    },
+    {
+      "attributes": [
+        {
+          "name": "type",
+          "type": "mdxJsxAttribute",
+          "value": "warning",
+        },
+      ],
+      "children": [
+        {
+          "attributes": [],
+          "children": [
+            {
+              "position": {
+                "end": {
+                  "column": 25,
+                  "line": 19,
+                  "offset": 114,
+                },
+                "start": {
+                  "column": 12,
+                  "line": 19,
+                  "offset": 101,
+                },
+              },
+              "type": "text",
+              "value": "This is Title",
+            },
+          ],
+          "name": "CalloutTitle",
+          "type": "mdxJsxFlowElement",
+        },
+        {
+          "attributes": [],
+          "children": [
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 9,
+                      "line": 21,
+                      "offset": 125,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 21,
+                      "offset": 117,
+                    },
+                  },
+                  "type": "text",
+                  "value": "Warning ",
+                },
+                {
+                  "children": [
+                    {
+                      "position": {
+                        "end": {
+                          "column": 15,
+                          "line": 21,
+                          "offset": 131,
+                        },
+                        "start": {
+                          "column": 11,
+                          "line": 21,
+                          "offset": 127,
+                        },
+                      },
+                      "type": "text",
+                      "value": "this",
+                    },
+                  ],
+                  "position": {
+                    "end": {
+                      "column": 17,
+                      "line": 21,
+                      "offset": 133,
+                    },
+                    "start": {
+                      "column": 9,
+                      "line": 21,
+                      "offset": 125,
+                    },
+                  },
+                  "type": "strong",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 17,
+                  "line": 21,
+                  "offset": 133,
+                },
+                "start": {
+                  "column": 1,
+                  "line": 21,
+                  "offset": 117,
+                },
+              },
+              "type": "paragraph",
+            },
+          ],
+          "name": "CalloutDescription",
+          "type": "mdxJsxFlowElement",
+        },
+      ],
+      "name": "CalloutContainer",
+      "position": {
+        "end": {
+          "column": 4,
+          "line": 23,
+          "offset": 138,
+        },
+        "start": {
+          "column": 1,
+          "line": 19,
+          "offset": 90,
+        },
+      },
+      "type": "mdxJsxFlowElement",
+    },
+    {
+      "attributes": [
+        {
+          "name": "type",
+          "type": "mdxJsxAttribute",
+          "value": "danger",
+        },
+      ],
+      "children": [
+        {
+          "attributes": [],
+          "children": [
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 26,
+                      "line": 27,
+                      "offset": 176,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 27,
+                      "offset": 151,
+                    },
+                  },
+                  "type": "text",
+                  "value": "Destructive action ahead.",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 26,
+                  "line": 27,
+                  "offset": 176,
+                },
+                "start": {
+                  "column": 1,
+                  "line": 27,
+                  "offset": 151,
+                },
+              },
+              "type": "paragraph",
+            },
+          ],
+          "name": "CalloutDescription",
+          "type": "mdxJsxFlowElement",
+        },
+      ],
+      "name": "CalloutContainer",
+      "position": {
+        "end": {
+          "column": 4,
+          "line": 29,
+          "offset": 181,
+        },
+        "start": {
+          "column": 1,
+          "line": 25,
+          "offset": 140,
+        },
+      },
+      "type": "mdxJsxFlowElement",
+    },
+    {
+      "attributes": [
+        {
+          "name": "type",
+          "type": "mdxJsxAttribute",
+          "value": "success",
+        },
+      ],
+      "children": [
+        {
+          "attributes": [],
+          "children": [
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 10,
+                      "line": 33,
+                      "offset": 204,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 33,
+                      "offset": 195,
+                    },
+                  },
+                  "type": "text",
+                  "value": "All good.",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 10,
+                  "line": 33,
+                  "offset": 204,
+                },
+                "start": {
+                  "column": 1,
+                  "line": 33,
+                  "offset": 195,
+                },
+              },
+              "type": "paragraph",
+            },
+          ],
+          "name": "CalloutDescription",
+          "type": "mdxJsxFlowElement",
+        },
+      ],
+      "name": "CalloutContainer",
+      "position": {
+        "end": {
+          "column": 4,
+          "line": 35,
+          "offset": 209,
+        },
+        "start": {
+          "column": 1,
+          "line": 31,
+          "offset": 183,
+        },
+      },
+      "type": "mdxJsxFlowElement",
+    },
+    {
+      "attributes": [
+        {
+          "name": "type",
+          "type": "mdxJsxAttribute",
+          "value": "question",
+        },
+      ],
+      "children": [
+        {
+          "attributes": [],
+          "children": [
+            {
+              "children": [
+                {
+                  "position": {
+                    "end": {
+                      "column": 11,
+                      "line": 39,
+                      "offset": 234,
+                    },
+                    "start": {
+                      "column": 1,
+                      "line": 39,
+                      "offset": 224,
+                    },
+                  },
+                  "type": "text",
+                  "value": "Need help?",
+                },
+              ],
+              "position": {
+                "end": {
+                  "column": 11,
+                  "line": 39,
+                  "offset": 234,
+                },
+                "start": {
+                  "column": 1,
+                  "line": 39,
+                  "offset": 224,
+                },
+              },
+              "type": "paragraph",
+            },
+          ],
+          "name": "CalloutDescription",
+          "type": "mdxJsxFlowElement",
+        },
+      ],
+      "name": "CalloutContainer",
+      "position": {
+        "end": {
+          "column": 4,
+          "line": 41,
+          "offset": 239,
+        },
+        "start": {
+          "column": 1,
+          "line": 37,
+          "offset": 211,
+        },
+      },
+      "type": "mdxJsxFlowElement",
+    },
+  ],
+  "position": {
+    "end": {
+      "column": 1,
+      "line": 42,
+      "offset": 240,
+    },
+    "start": {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+  },
+  "type": "root",
+}

@@ -1,0 +1,10 @@
+@import '../lib/default-colors.css';
+
+html[data-watanuki-theme='dark'] {
+  color-scheme: dark;
+}
+
+html[data-watanuki-theme='dark'] #nd-sidebar {
+  --color-fd-muted: hsl(0, 0%, 14%);
+  --color-fd-secondary: hsl(0, 0%, 16%);
+}

@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Watanuki
 
-## Getting Started
+Opinionated documentation platform — Watanuki-shaped, simpler, style-first.
 
-First, run the development server:
+## Packages
+
+| Package | Description |
+|---------|-------------|
+| `@watanuki/core` | Headless docs kernel (source, page tree, search, i18n) |
+| `@watanuki/mdx` | MDX collections and content compiler |
+| `@watanuki/ui` | Base UI + Motion docs UI |
+| `@watanuki/theme` | One-variable style presets |
+| `@watanuki/tailwind` | Tailwind utilities for UI |
+| `@watanuki/typescript` | AutoTypeTable from TS types |
+| `@watanuki/openapi` | OpenAPI docs generation |
+| `@watanuki/api-docs` | Shared API docs UI components |
+| `create-watanuki` | Project scaffolder |
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm build          # build all packages
+pnpm types:check    # typecheck monorepo
+pnpm lint           # lint packages
+pnpm dev:docs       # run docs site
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Create a new project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm create watanuki
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [PUBLISHING.md](./PUBLISHING.md) for npm publish order, auth, and end-user install details.

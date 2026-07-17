@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@import '@watanuki/theme/styles.css';
+@import '@watanuki/ui/style.css';
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}

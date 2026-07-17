@@ -1,0 +1,61 @@
+/* Minimal — muted canvas, rounded inset main card, no borders */
+html[data-watanuki-style='minimal'] {
+  --wt-sidebar-width: 280px;
+  --wt-header-height: 52px;
+  --wt-motion-spring: 0.25s ease;
+  --wt-frame-radius: 0.75rem;
+  --wt-content-inset: 0.75rem;
+  --wt-inset-surface: color-mix(in oklab, var(--color-fd-muted) 92%, var(--color-fd-background) 8%);
+}
+
+html[data-watanuki-style='minimal'] #nd-docs-layout {
+  background: var(--color-fd-background);
+  grid-template:
+    'header header header'
+    'toc-popover toc-popover toc-popover'
+    'sidebar main toc' 1fr
+    / var(--fd-sidebar-col) minmax(0, 1fr) var(--fd-toc-width) !important;
+}
+
+html[data-watanuki-style='minimal'] #nd-sidebar {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+html[data-watanuki-style='minimal'] #nd-sidebar > div:first-child {
+  border-bottom: none;
+}
+
+html[data-watanuki-style='minimal'] #nd-toc {
+  background: transparent;
+  padding-inline-end: var(--wt-content-inset);
+}
+
+@variant lg {
+  html[data-watanuki-style='minimal'] #nd-page {
+    margin: var(--wt-content-inset);
+    margin-inline-end: calc(var(--wt-content-inset) * 0.5);
+    border-radius: var(--wt-frame-radius);
+    background: var(--wt-inset-surface);
+    border: none;
+    box-shadow: none;
+    max-width: min(900px, calc(100% - var(--wt-content-inset) * 2));
+  }
+}
+
+@variant max-lg {
+  html[data-watanuki-style='minimal'] #nd-page {
+    background: var(--wt-inset-surface);
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+html[data-watanuki-style='minimal'] #nd-page::before {
+  content: none;
+}

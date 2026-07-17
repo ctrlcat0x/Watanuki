@@ -1,0 +1,6 @@
+{
+  "title": "Migration",
+  "icon": "ArrowRightLeft",
+  "defaultOpen": true,
+  "pages": ["migration-from-fumadocs", "migration-from-nextra"]
+}

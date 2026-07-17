@@ -1,0 +1,119 @@
+---
+title: Migrate from Fumadocs
+description: Package renames, config changes, and API differences when moving from Fumadocs to Watanuki.
+---
+
+Watanuki is a focused fork of the Fumadocs stack. Most concepts map directly; package names and some APIs changed.
+
+## Package mapping
+
+| Fumadocs | Watanuki |
+| --- | --- |
+| `fumadocs-core` | `@watanuki/core` |
+| `fumadocs-ui` | `@watanuki/ui` |
+| `fumadocs-mdx` | `@watanuki/mdx` |
+| `fumadocs-openapi` | `@watanuki/openapi` |
+| `create-fumadocs-app` | `create-watanuki` |
+| `fumadocs-theme` (if used) | `@watanuki/theme` |
+
+Update `package.json` dependencies and imports:
+
+```diff
+- import { loader } from 'fumadocs-core/source';
++ import { loader } from '@watanuki/core/source';
+
+- import { DocsLayout } from 'fumadocs-ui/layouts/docs';
++ import { DocsLayout } from '@watanuki/ui/layouts/docs';
+
+- import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
++ import { defineConfig, defineDocs } from '@watanuki/mdx/config';
+```
+
+## Scaffold fresh, then port content
+
+Fastest path:
+
+```bash
+pnpm create watanuki my-site --template next --search static
+```
+
+Copy `content/docs/` and `source.config.ts` from your Fumadocs project. Adjust `meta.json` if needed.
+
+## Config changes
+
+### Theme / layout
+
+Fumadocs often used `layout.tsx` props or `fumadocs-ui` theme context. Watanuki uses a single config file:
+
+```ts
+// lib/watanuki.config.ts
+import { defineConfig } from '@watanuki/theme/config';
+
+export const watanukiConfig = defineConfig({
+  style: 'classic',       // was layout variant / custom CSS
+  defaultTheme: 'dark',
+  toc: { style: 'tab' },
+  search: {
+    provider: 'local',
+  },
+});
+```
+
+Pass `watanukiConfig` to page components and set `data-watanuki-style` on `<html>`.
+
+### Source loader
+
+The loader API is unchanged:
+
+```ts
+import { docs } from 'collections/server';
+import { loader } from '@watanuki/core/source';
+import { toWatanukiSource } from '@watanuki/mdx/runtime/server';
+
+export const source = loader({
+  baseUrl: '/docs',
+  source: toWatanukiSource(docs, []),
+});
+```
+
+`loader.getPages()`, `source.getPageTree()`, and `generateParams()` work the same.
+
+### Search
+
+| Fumadocs | Watanuki |
+| --- | --- |
+| `createFromSource(source)` | `@watanuki/core/search/server` — same export for building indexes |
+| Static export route | `exportSearchIndexes(source)` + `/static.json` (used by `provider: 'local'`) |
+| Orama Cloud | `provider: 'orama'` + `@orama/core` |
+
+Use `search.provider: 'local'` for built-in client-side fuzzy search.
+
+### MDX components
+
+Replace `fumadocs-ui/mdx` imports with `@watanuki/ui/mdx` or your local `components/mdx.tsx` re-exports.
+
+### OpenAPI
+
+```diff
+- import { createOpenAPI } from 'fumadocs-openapi/server';
++ import { createOpenAPI } from '@watanuki/openapi/server';
+```
+
+## Removed / different in Watanuki
+
+- **Fumadocs CLI** — use `create-watanuki` and app-level routes (`llms.txt`, `sitemap.xml`, `static.json`)
+- **Mixedbread / Flexsearch** — not shipped; use Orama static or Algolia
+- **Multiple layout packages** — consolidated into `@watanuki/ui` + `@watanuki/theme`
+
+## Checklist
+
+1. Replace package names in `package.json` and imports
+2. Add `lib/watanuki.config.ts` and wire `data-watanuki-style`
+3. Copy `content/docs/` and `source.config.ts`
+4. Add `/static.json` route for local fuzzy search
+5. Add `/sitemap.xml` route if needed
+6. Run `pnpm build && pnpm types:check`
+
+## Need help?
+
+Compare with the [Getting Started](/docs/getting-started) guide and the `examples/next` app in the Watanuki monorepo.
