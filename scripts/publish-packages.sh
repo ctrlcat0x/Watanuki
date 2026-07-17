@@ -3,6 +3,16 @@ set -euo pipefail
 
 readonly registry="${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}"
 readonly dry_run="${PUBLISH_DRY_RUN:-0}"
+readonly trusted_publishing="${NPM_TRUSTED_PUBLISHING:-0}"
+publish_directory=""
+
+cleanup() {
+  if [[ -n "${publish_directory}" && -d "${publish_directory}" ]]; then
+    rm -rf -- "${publish_directory}"
+  fi
+}
+
+trap cleanup EXIT
 
 publish_package() {
   local directory="$1"
@@ -24,7 +34,20 @@ publish_package() {
     return
   fi
 
-  pnpm --filter "${package_name}" publish --access public --no-git-checks
+  if [[ "${trusted_publishing}" != "1" ]]; then
+    pnpm --filter "${package_name}" publish --access public --no-git-checks
+    return
+  fi
+
+  if [[ -z "${publish_directory}" ]]; then
+    publish_directory="$(mktemp -d -t watanuki-publish)"
+  fi
+
+  local archive_name="${package_name#@}"
+  archive_name="${archive_name//\//-}-${version}.tgz"
+
+  pnpm --filter "${package_name}" pack --pack-destination "${publish_directory}"
+  npm publish "${publish_directory}/${archive_name}" --access public
 }
 
 pnpm build

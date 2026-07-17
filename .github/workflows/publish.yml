@@ -14,26 +14,27 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: pnpm/action-setup@v4
         with:
           version: 11.5.3
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
-          cache: pnpm
+          node-version: 24
           registry-url: https://registry.npmjs.org
+          package-manager-cache: false
 
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm publish:packages
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TRUSTED_PUBLISHING: "1"
           PUBLISH_DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}

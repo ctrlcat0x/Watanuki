@@ -33,7 +33,7 @@ All publishable packages set `"publishConfig": { "access": "public" }`.
 1. Create (or get access to) the `@watanuki` and `@fumari` npm orgs: https://www.npmjs.com/org/create
 2. Log in: `npm login` (or `npm login --auth-type=web`)
 3. Confirm: `npm whoami` and that you can publish under `@watanuki` and `@fumari`
-4. Create an npm automation token, then add it to GitHub repository Actions secrets as `NPM_TOKEN`.
+4. Use npm 2FA/OTP for the first manual publish. Subsequent releases use npm trusted publishing with no long-lived token.
 
 ## Versioning
 
@@ -66,16 +66,28 @@ pnpm publish:packages
 PUBLISH_DRY_RUN=1 pnpm publish:packages
 ```
 
-## GitHub Actions
+## GitHub Actions trusted publishing
 
-The `Publish packages` workflow runs when a `v*` tag is pushed. It skips package versions already on npm, so a release tag can safely be retried.
+The `Publish packages` workflow runs when a `v*` tag is pushed. It uses npm OIDC trusted publishing: no `NPM_TOKEN` or registry credential is stored in GitHub.
+
+npm requires each package to exist before it can be connected to a trusted publisher. Publish the initial versions locally with 2FA, then configure this for every Watanuki package on npm:
+
+```text
+Package Settings → Trusted Publisher → GitHub Actions
+Organization/user: ctrlcat0x
+Repository: Watanuki
+Workflow filename: publish.yml
+Allowed action: npm publish
+```
+
+The workflow uses Node 24, npm 11.5.1+, GitHub-hosted runners, and `id-token: write` as required by npm. It packs workspace packages with pnpm, then publishes each archive through npm so workspace dependency versions are resolved before OIDC publishing.
 
 ```bash
 git tag v16.10.8
 git push origin v16.10.8
 ```
 
-Before pushing a tag, bump every changed package and set GitHub repository secret `NPM_TOKEN` to an npm automation token with access to `@watanuki` and `@fumari`.
+Before pushing a tag, bump every changed package. Do not add `NPM_TOKEN` to GitHub Actions secrets.
 
 ## End-user install
 
