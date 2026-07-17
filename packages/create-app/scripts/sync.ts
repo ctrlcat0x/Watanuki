@@ -5,7 +5,7 @@ import fs from 'node:fs/promises';
 import { glob } from 'tinyglobby';
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
-const examplesDir = path.join(dir, '../../examples');
+const examplesDir = path.join(dir, '../../../examples');
 const templateDir = path.join(dir, '../template');
 
 const templates = [
