@@ -1,0 +1,52 @@
+---
+title: SEO & Open Graph Images
+description: Publish canonical metadata, structured data, and page-specific social previews.
+icon: ScanSearch
+---
+
+Watanuki generates metadata from each page's frontmatter. Give every page a useful `title` and `description`:
+
+```mdx
+---
+title: Deploy to Production
+description: Build and deploy the docs site with canonical metadata.
+---
+```
+
+## Set the public URL
+
+```bash title=".env.local"
+NEXT_PUBLIC_SITE_URL=https://docs.example.com
+```
+
+Vercel production URLs are detected automatically, but an explicit URL keeps canonical links stable across providers.
+
+## Configure features
+
+```ts title="lib/watanuki.config.ts"
+seo: {
+  og: { enabled: true },
+  sitemap: true,
+  robots: true,
+  structuredData: true,
+  llms: true,
+  x: { handle: '@yourcompany' },
+}
+```
+
+Each docs page emits:
+
+- canonical URL
+- Open Graph article metadata
+- X/Twitter card metadata
+- `TechArticle` JSON-LD
+- a dynamic 1200 × 630 PNG at `/og/docs/.../image.png`
+
+## Verify before deployment
+
+```bash
+pnpm build
+pnpm start
+```
+
+Inspect a page's `<head>` for `canonical`, `og:image`, and `twitter:image`, then open its `og:image` URL directly.

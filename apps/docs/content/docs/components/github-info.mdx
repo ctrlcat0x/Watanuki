@@ -1,0 +1,28 @@
+---
+title: GitHub info
+description: Display repository metadata from the GitHub API.
+---
+
+GitHub info turns a repository link into a useful project snapshot. Readers can see the repository identity and key public metadata before deciding to inspect the source, report an issue, or adopt a dependency.
+
+## When to use it
+
+- Open-source project introductions
+- Integration pages that recommend a public repository
+- Examples where repository activity and language add useful context
+
+## Why it helps
+
+Use this card when repository context builds trust or helps evaluation. Keep a normal text link available in surrounding copy so the destination remains clear and accessible.
+
+## Example
+
+Fetch and display a repository card from the GitHub API. Any public `owner`/`repo` works.
+
+```tsx
+<GithubInfo owner="ctrlcat0x" repo="watanuki" />
+```
+
+Live demo uses a public fallback while that repository is private:
+
+<GithubInfo owner="fuma-nama" repo="fumadocs" />

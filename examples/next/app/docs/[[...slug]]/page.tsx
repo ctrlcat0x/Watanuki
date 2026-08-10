@@ -16,6 +16,7 @@ import { gitConfig } from '@/lib/shared';
 import { watanukiConfig } from '@/lib/watanuki.config';
 import { appName, siteUrl } from '@/lib/shared';
 import { createDocsJsonLd, createDocsMetadata } from '@watanuki/ui/metadata';
+import { getTwitterHandle, isOgEnabled, isStructuredDataEnabled } from '@/lib/seo';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -24,14 +25,16 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
 
   const MDX = page.data.body;
   const markdownUrl = getPageMarkdownUrl(page).url;
-  const image = getPageImage(page).url;
-  const jsonLd = createDocsJsonLd({
-    title: page.data.title,
-    description: page.data.description,
-    path: page.url,
-    image,
-    baseUrl: siteUrl,
-  });
+  const image = isOgEnabled() ? getPageImage(page).url : undefined;
+  const jsonLd = isStructuredDataEnabled()
+    ? createDocsJsonLd({
+        title: page.data.title,
+        description: page.data.description,
+        path: page.url,
+        image,
+        baseUrl: siteUrl,
+      })
+    : null;
 
   return (
     <DocsPage
@@ -51,10 +54,12 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
         <PagePagerButtons className="ms-auto" />
       </div>
       <DocsBody>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        {jsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+        ) : null}
         <MDX
           components={getMDXComponents({
             // this allows you to link to other pages with relative file paths
@@ -79,8 +84,9 @@ export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): P
     title: page.data.title,
     description: page.data.description,
     path: page.url,
-    image: getPageImage(page).url,
+    image: isOgEnabled() ? getPageImage(page).url : undefined,
     baseUrl: siteUrl,
     siteName: appName,
+    twitterHandle: getTwitterHandle(),
   });
 }

@@ -1,0 +1,57 @@
+---
+title: Media
+description: Present zoomable images, GIFs, audio, and video.
+---
+
+The Media component gives images, GIFs, audio, and video a consistent presentation inside documentation. It detects common formats, supplies the right controls, and keeps mixed media aligned with the rest of the docs experience.
+
+## When to use it
+
+- Product screenshots that benefit from zoom
+- Short animations demonstrating motion or interaction
+- Audio and video examples that belong directly beside written guidance
+
+## Why it helps
+
+Choose the lightest format that communicates the idea. Always provide meaningful alternative text for informative images, and keep captions or nearby prose clear enough to explain what readers should notice.
+
+## Example
+
+Auto-detects image, GIF, audio, or video from the file extension. Override with `type`.
+
+```tsx
+import { Media } from '@watanuki/ui/components/media'
+
+<Media src="/placeholder-800x600.svg" alt="Placeholder" />
+<Media src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif" />
+<Media src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" />
+<Media src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" />
+<Media src="..." type="video" />
+```
+
+### Image
+
+Click to zoom (`react-medium-image-zoom`). Click again or the backdrop to close.
+
+<Media src="/placeholder-800x600.svg" alt="800 × 600 placeholder" />
+
+### GIF
+
+Same zoom behavior as images.
+
+<Media
+  src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Newtons_cradle_animation_book_2.gif"
+  alt="Newton's cradle animation"
+/>
+
+### Audio
+
+Play/pause, waveform seek, speed and volume menus.
+
+<Media src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" />
+
+### Video
+
+Floating controls, scrub bar, time, speed, volume, fullscreen.
+
+<Media src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" />

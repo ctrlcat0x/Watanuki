@@ -1,0 +1,33 @@
+---
+title: Steps (vertical)
+description: Turn procedures into a readable vertical sequence.
+---
+
+Vertical steps make an ordered procedure easier to follow than a flat list of headings. The connecting rail preserves sequence while each step still has room for commands, screenshots, warnings, and explanation.
+
+## When to use it
+
+- Installation and deployment instructions
+- Migrations where actions must happen in order
+- Tutorials with checkpoints readers can verify before continuing
+
+## Why it helps
+
+Each step should describe one clear action and, where useful, its expected result. If order does not matter, use regular sections or bullets instead of implying a dependency that is not real.
+
+## Example
+
+Vertical content steps for docs (also used by `remark-steps`). Distinct from the horizontal stepper below.
+
+<Steps>
+  <Step>
+    ### Install packages
+
+    Add `@watanuki/ui` and peers to your app.
+  </Step>
+  <Step>
+    ### Write MDX
+
+    Drop pages under `content/docs`.
+  </Step>
+</Steps>

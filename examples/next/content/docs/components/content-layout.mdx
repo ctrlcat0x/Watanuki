@@ -1,0 +1,61 @@
+---
+title: Content Layout
+description: Structure procedures, project trees, and typed API references.
+icon: ListTree
+---
+
+## Steps
+
+<Steps>
+  <Step>
+    ### Install
+
+    Install dependencies.
+  </Step>
+  <Step>
+    ### Configure
+
+    Edit `lib/watanuki.config.ts`.
+  </Step>
+  <Step>
+    ### Publish
+
+    Run a production build and deploy.
+  </Step>
+</Steps>
+
+## File trees
+
+<Files>
+  <Folder name="content" defaultOpen>
+    <Folder name="docs" defaultOpen>
+      <File name="meta.json" />
+      <File name="index.mdx" />
+    </Folder>
+  </Folder>
+  <Folder name="lib" defaultOpen>
+    <File name="watanuki.config.ts" />
+    <File name="source.ts" />
+  </Folder>
+</Files>
+
+## Type tables
+
+<TypeTable
+  type={{
+    title: {
+      type: 'string',
+      description: 'Visible page title.',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      description: 'Summary used by the page and SEO metadata.',
+    },
+    full: {
+      type: 'boolean',
+      description: 'Use the full content width.',
+      default: 'false',
+    },
+  }}
+/>

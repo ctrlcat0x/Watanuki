@@ -24,7 +24,7 @@ export const blogSource = loader({
 });
 
 export function getPageImage(page: (typeof source)['$inferPage']) {
-  const segments = [...page.slugs, 'image.png'];
+  const segments = [...(page.locale ? [page.locale] : []), ...page.slugs, 'image.png'];
 
   return {
     segments,
@@ -33,7 +33,7 @@ export function getPageImage(page: (typeof source)['$inferPage']) {
 }
 
 export function getPageMarkdownUrl(page: (typeof source)['$inferPage']) {
-  const segments = [...page.slugs, 'content.md'];
+  const segments = [...(page.locale ? [page.locale] : []), ...page.slugs, 'content.md'];
 
   return {
     segments,

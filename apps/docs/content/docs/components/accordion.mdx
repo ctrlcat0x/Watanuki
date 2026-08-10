@@ -1,0 +1,37 @@
+---
+title: Accordion
+description: Group expandable details with item and children APIs.
+---
+
+Accordions keep supporting detail close to the topic without making the main reading path feel long. Readers can scan item titles first, then open only the explanation, FAQ answer, or configuration detail they need.
+
+## When to use it
+
+- FAQs with answers of uneven length
+- Optional setup notes, troubleshooting, or advanced configuration
+- A compact group of related details where only one or a few items matter
+
+## Why it helps
+
+Use an accordion to reduce visual noise, not to hide essential instructions. If every reader must see the content to complete a task, keep it expanded in the page instead.
+
+## Example
+
+Bouncy grouped accordion — open item splits into its own rounded card. Items API or children API.
+
+```tsx
+import { Accordion, Accordions } from '@watanuki/ui/components/accordion'
+
+<Accordion
+  items={[
+    { id: 'a', title: 'Release Brief', description: '…', icon: <FileText /> },
+  ]}
+  defaultValue="a"
+/>
+
+<Accordions defaultValue="a">
+  <Accordion title="Release Brief">Summary content</Accordion>
+</Accordions>
+```
+
+<AccordionDemo />

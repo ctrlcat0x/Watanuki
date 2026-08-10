@@ -1,0 +1,51 @@
+---
+title: Table of Contents
+description: Choose a TOC style and control it for individual pages.
+icon: List
+---
+
+## Global style
+
+Set the same style on desktop and mobile through `watanuki.config.ts`:
+
+```ts title="lib/watanuki.config.ts"
+export const watanukiConfig = {
+  style: 'classic',
+  toc: {
+    style: 'clerk',
+  },
+} satisfies WatanukiConfig;
+```
+
+| Value | Behavior |
+| --- | --- |
+| `clerk` | Rail with a moving active marker |
+| `tab` | Tracks the primary visible heading |
+| `basic` | Compact text highlight |
+
+The docs page passes this value to `tableOfContent` and `tableOfContentPopover`:
+
+```tsx title="app/docs/[[...slug]]/page.tsx"
+<DocsPage
+  toc={page.data.toc}
+  full={page.data.full}
+  tableOfContent={{ style: watanukiConfig.toc?.style }}
+  tableOfContentPopover={{ style: watanukiConfig.toc?.style }}
+>
+  {/* page content */}
+</DocsPage>
+```
+
+## Hide the TOC on one page
+
+Set `full: true` in frontmatter. Full-width pages disable the desktop TOC by default:
+
+```mdx
+---
+title: Component Gallery
+description: Full-width visual examples.
+full: true
+---
+```
+
+Headings at level two and three populate the TOC automatically.

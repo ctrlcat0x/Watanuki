@@ -1,0 +1,48 @@
+---
+title: Hover card (Glimpse)
+description: Add rich link previews without leaving the page.
+---
+
+Hover cards preview a linked resource without forcing readers to leave the current page. A title, summary, and image provide enough context to decide whether opening the destination is worthwhile.
+
+## When to use it
+
+- References to repositories, products, or related guides
+- Explaining unfamiliar links inline without adding a full section
+- Dense resource pages where short previews improve discovery
+
+## Why it helps
+
+Treat the preview as enhancement, not the only place containing essential information. Link text should still make sense for touch, keyboard, and screen-reader users who may never open the hover card.
+
+## Example
+
+Underlined link with a preview popover on hover.
+
+```tsx
+import { HoverCard } from '@watanuki/ui/components/hover-card'
+
+Check out{' '}
+<HoverCard
+  href="https://github.com/fuma-nama/fumadocs"
+  title="fuma-nama/fumadocs"
+  description="The beautiful docs framework for React developers."
+  image="/placeholder-1200x700.svg"
+>
+  Fumadocs
+</HoverCard>{' '}
+on GitHub.
+```
+
+<div className="not-prose my-6 text-center text-lg text-fd-foreground">
+  Check out{' '}
+  <HoverCard
+    href="https://github.com/fuma-nama/fumadocs"
+    title="fuma-nama/fumadocs"
+    description="The beautiful docs framework for React developers."
+    image="/placeholder-1200x700.svg"
+  >
+    Fumadocs
+  </HoverCard>{' '}
+  on GitHub.
+</div>

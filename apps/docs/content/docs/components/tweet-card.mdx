@@ -1,0 +1,30 @@
+---
+title: Tweet card
+description: Embed compact social proof cards in documentation.
+---
+
+Tweet cards bring a public post into the docs as compact supporting evidence. They work well for attribution, community reactions, launch announcements, or short statements whose source matters.
+
+## When to use it
+
+- Customer or community proof
+- Quoting a public announcement with attribution
+- Linking discussion that adds context to a release or feature
+
+## Why it helps
+
+The surrounding page should explain why the post matters. Avoid making an external social post the only source of essential instructions, since posts can change or become unavailable.
+
+## Example
+
+Glass-style X/Twitter embed card for social proof in docs.
+
+```tsx
+import { TweetCard } from '@watanuki/ui/components/tweet-card'
+
+<TweetCard href="https://github.com/ctrlcat0x/Watanuki" />
+```
+
+<div className="not-prose my-6 flex justify-center">
+  <TweetCard href="https://github.com/ctrlcat0x/Watanuki" />
+</div>

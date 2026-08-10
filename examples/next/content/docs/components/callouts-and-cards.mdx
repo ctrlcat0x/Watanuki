@@ -1,0 +1,45 @@
+---
+title: Callouts & Cards
+description: Highlight important guidance and create clear navigation.
+icon: MessageSquareWarning
+---
+
+## Callouts
+
+Use a callout when readers should notice context, advice, risk, or success.
+
+<Callout type="note" title="Note">
+  Add neutral context without interrupting the guide.
+</Callout>
+
+<Callout type="tip" title="Tip">
+  Share a faster or safer workflow.
+</Callout>
+
+<Callout type="warning" title="Warning">
+  Explain what can break before the reader continues.
+</Callout>
+
+```mdx
+<Callout type="tip" title="Use previews">
+  Run the production build before deploying.
+</Callout>
+```
+
+Supported types: `note`, `tip`, `info`, `warning`, `danger`, `success`, and `question`.
+
+## Cards
+
+Use a single `Card` or group related destinations with `Cards`.
+
+<Cards>
+  <Card title="Next.js" description="Read the App Router docs." href="https://nextjs.org/docs/app" />
+  <Card title="Watanuki" description="Browse the full component reference." href="https://watanuki.dev/docs/components" />
+</Cards>
+
+```mdx
+<Cards>
+  <Card title="Install" description="Set up the project." href="/docs/getting-started" />
+  <Card title="Customize" description="Choose a theme." href="/docs/themes" />
+</Cards>
+```

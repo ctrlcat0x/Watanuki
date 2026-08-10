@@ -1,0 +1,49 @@
+---
+title: Tabs & Code
+description: Document package-manager commands, variants, and highlighted source.
+icon: SquareCode
+---
+
+## Synced tabs
+
+Give related tab groups the same `groupId`. `persist` remembers the reader's choice.
+
+<Tabs groupId="package-manager" persist items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <Tab value="npm">`npm install`</Tab>
+  <Tab value="pnpm">`pnpm install`</Tab>
+  <Tab value="yarn">`yarn`</Tab>
+  <Tab value="bun">`bun install`</Tab>
+</Tabs>
+
+```mdx
+<Tabs groupId="package-manager" persist items={['npm', 'pnpm']}>
+  <Tab value="npm">`npm install`</Tab>
+  <Tab value="pnpm">`pnpm install`</Tab>
+</Tabs>
+```
+
+## Code blocks
+
+Fenced code supports titles, line numbers, line highlights, focus, word highlights, and diffs.
+
+```ts title="lib/config.ts" lineNumbers {2}
+export const config = {
+  theme: 'dark',
+  search: 'local',
+};
+```
+
+```ts title="Diff notation"
+export const theme = 'light'; // [!code --]
+export const theme = 'dark'; // [!code ++]
+```
+
+Use tab metadata to group adjacent fences:
+
+```bash tab="npm" tab-group="package-manager"
+npm install
+```
+
+```bash tab="pnpm" tab-group="package-manager"
+pnpm install
+```

@@ -4,6 +4,7 @@ import { ImageResponse } from 'next/og';
 import { generate as DefaultImage } from '@watanuki/ui/og';
 import { appName } from '@/lib/shared';
 import { isOgEnabled } from '@/lib/seo';
+import { i18n } from '@/lib/i18n';
 
 export const revalidate = false;
 
@@ -11,7 +12,11 @@ export async function GET(_req: Request, { params }: RouteContext<'/og/docs/[...
   if (!isOgEnabled()) notFound();
 
   const { slug } = await params;
-  const page = source.getPage(slug.slice(0, -1));
+  const [localeSegment, ...localizedSlug] = slug;
+  const locale = i18n.languages.includes(localeSegment as (typeof i18n.languages)[number])
+    ? localeSegment
+    : undefined;
+  const page = source.getPage((locale ? localizedSlug : slug).slice(0, -1), locale);
   if (!page) notFound();
 
   return new ImageResponse(

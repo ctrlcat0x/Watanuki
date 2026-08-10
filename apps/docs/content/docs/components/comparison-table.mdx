@@ -1,0 +1,34 @@
+---
+title: Comparison table
+description: Explain feature support with accessible status matrices.
+---
+
+Comparison tables help readers evaluate several options against the same criteria. Consistent rows and status markers make differences visible faster than separate feature lists or long paragraphs.
+
+## When to use it
+
+- Product, plan, or framework comparisons
+- Feature availability across platforms or releases
+- Migration guides that map old capabilities to new ones
+
+## Why it helps
+
+Use neutral criteria and explain partial support in the row description. A comparison table should help readers make a decision, not hide nuance behind a wall of checkmarks.
+
+## Example
+
+Feature matrix with status cells: `true` / `false` / `'partial'` / `null`.
+
+```tsx
+import { ComparisonTable } from '@watanuki/ui/components/comparison-table'
+
+<ComparisonTable
+  columns={['Watanuki', 'Fumadocs']}
+  rows={[
+    { feature: 'Design System', description: '...', values: [true, true] },
+    { feature: 'Dark Mode', values: [true, false] },
+  ]}
+/>
+```
+
+<ComparisonTableDemo />

@@ -1,0 +1,73 @@
+---
+title: Getting Started
+description: Run your docs locally and publish your first page.
+icon: Rocket
+---
+
+## Start the development server
+
+Dependencies are installed when `create-watanuki` finishes. Enter the generated directory and start Next.js:
+
+```bash
+cd my-docs
+pnpm dev
+```
+
+Open [http://localhost:3000/docs](http://localhost:3000/docs).
+
+## Add a page
+
+Create `content/docs/quick-start.mdx`:
+
+```mdx title="content/docs/quick-start.mdx"
+---
+title: Quick Start
+description: Complete your first task.
+icon: Zap
+---
+
+## First task
+
+Write your guide here.
+```
+
+Add its slug to `content/docs/meta.json`:
+
+```json title="content/docs/meta.json"
+{
+  "title": "Documentation",
+  "pages": ["index", "getting-started", "quick-start", "components"]
+}
+```
+
+## Organize folders
+
+Every docs folder can contain its own `meta.json`:
+
+<Files>
+  <Folder name="content" defaultOpen>
+    <Folder name="docs" defaultOpen>
+      <File name="meta.json" />
+      <File name="index.mdx" />
+      <Folder name="guides" defaultOpen>
+        <File name="meta.json" />
+        <File name="index.mdx" />
+        <File name="deployment.mdx" />
+      </Folder>
+    </Folder>
+  </Folder>
+</Files>
+
+## Production
+
+Set your public URL before deploying so canonical and Open Graph URLs are absolute:
+
+```bash title=".env.local"
+NEXT_PUBLIC_SITE_URL=https://docs.example.com
+```
+
+Then verify the production build:
+
+```bash
+pnpm build
+```

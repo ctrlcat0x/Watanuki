@@ -1,0 +1,29 @@
+---
+title: YouTube
+description: Embed responsive YouTube videos by ID or URL.
+---
+
+The YouTube component embeds a responsive video without making authors manage iframe details. It accepts a video ID or full URL and keeps the player sized correctly inside the reading layout.
+
+## When to use it
+
+- Long-form tutorials that complement written steps
+- Recorded talks, demos, and release walkthroughs
+- Visual workflows that are difficult to communicate with still images
+
+## Why it helps
+
+Video should supplement, not replace, critical documentation. Add a short summary of what the video covers and keep commands, requirements, or key conclusions available as text.
+
+## Example
+
+Embed by video ID or full URL.
+
+```tsx
+import { YouTube } from '@watanuki/ui/components/youtube'
+
+<YouTube id="dQw4w9WgXcQ" />
+<YouTube src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+```
+
+<YouTube id="dQw4w9WgXcQ" className="my-4" />

@@ -1,0 +1,35 @@
+---
+title: MDX Components
+description: Compose useful docs pages with Watanuki's built-in MDX components.
+icon: Boxes
+---
+
+Components from `@watanuki/ui/mdx` are already registered in `components/mdx.tsx`. Use them directly inside `.mdx` files.
+
+<Cards>
+  <Card title="Callouts & cards" description="Highlight guidance and link to next steps." href="/docs/components/callouts-and-cards" />
+  <Card title="Tabs & code" description="Present commands and implementation variants." href="/docs/components/tabs-and-code" />
+  <Card title="Content layout" description="Build steps, file trees, and API tables." href="/docs/components/content-layout" />
+</Cards>
+
+## Add a custom component
+
+Register app-specific components beside the defaults:
+
+```tsx title="components/mdx.tsx"
+import defaultMdxComponents from '@watanuki/ui/mdx';
+import type { MDXComponents } from 'mdx/types';
+import { ProductDemo } from '@/components/product-demo';
+
+export function getMDXComponents(components?: MDXComponents) {
+  return {
+    ...defaultMdxComponents,
+    ProductDemo,
+    ...components,
+  } satisfies MDXComponents;
+}
+
+export const useMDXComponents = getMDXComponents;
+```
+
+Then use `<ProductDemo />` in any MDX page.

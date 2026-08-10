@@ -1,0 +1,72 @@
+---
+title: Tabs
+description: Build synced, persistent option and package-manager tabs.
+---
+
+Tabs place equivalent versions of the same instruction in one stable location. Readers select their package manager, framework, platform, or language once and can keep that preference synchronized across the page.
+
+## When to use it
+
+- Package-manager commands
+- Framework-specific implementations
+- Platform or language variants that solve the same task
+
+## Why it helps
+
+Use tabs only for mutually exclusive alternatives. Do not place sequential instructions in separate tabs, and avoid hiding content every reader must compare or read.
+
+## Example
+
+Sliding indicator on triggers. Panel chrome stays put; **inner content** blur-slides in on change.
+
+Shared selection via `groupId` (sessionStorage). Set `persist` to also write localStorage. Optional `queryString` mirrors the value into the URL (`?package-manager=pnpm`).
+
+Code fences with `tab="npm"` use the same storage when you add `tab-group="package-manager"` (or enable `remarkNpmOptions.persist` for `package-install` / `npm` fences).
+
+```tsx
+<Tabs groupId="package-manager" persist items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <Tab value="npm">npm install @watanuki/ui</Tab>
+  <Tab value="pnpm">pnpm add @watanuki/ui</Tab>
+</Tabs>
+```
+
+```bash tab="npm" tab-group="package-manager"
+npm install @watanuki/ui
+```
+
+```bash tab="pnpm" tab-group="package-manager"
+pnpm add @watanuki/ui
+```
+
+Live synced group (`groupId="package-manager"`):
+
+<Tabs groupId="package-manager" persist items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <Tab value="npm">Use npm to install packages.</Tab>
+  <Tab value="pnpm">Use pnpm (preferred in this monorepo).</Tab>
+  <Tab value="yarn">Use Yarn Classic / Berry.</Tab>
+  <Tab value="bun">Use Bun.</Tab>
+</Tabs>
+
+```bash tab="npm" tab-group="package-manager"
+npm install @watanuki/ui
+```
+
+```bash tab="pnpm" tab-group="package-manager"
+pnpm add @watanuki/ui
+```
+
+```bash tab="yarn" tab-group="package-manager"
+yarn add @watanuki/ui
+```
+
+```bash tab="bun" tab-group="package-manager"
+bun add @watanuki/ui
+```
+
+Framework picker (no shared group):
+
+<Tabs items={['Next.js', 'TanStack', 'Waku']}>
+  <Tab value="Next.js">App Router docs layout with `@watanuki/ui`.</Tab>
+  <Tab value="TanStack">Start + file routes.</Tab>
+  <Tab value="Waku">Minimal RSC docs setup.</Tab>
+</Tabs>

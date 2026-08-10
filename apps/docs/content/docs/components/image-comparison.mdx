@@ -1,0 +1,35 @@
+---
+title: Image comparison
+description: Compare before and after visuals with an interactive divider.
+---
+
+Image comparison places two matching visuals in one interactive surface. Moving the divider reveals the difference directly, which is more convincing and easier to understand than asking readers to compare separate screenshots.
+
+## When to use it
+
+- Before-and-after design or performance work
+- Theme, filter, restoration, or rendering comparisons
+- Migration results where layout changes are the main evidence
+
+## Why it helps
+
+Use images with matching dimensions, framing, and subject position. Misaligned screenshots make the interaction harder to read and can exaggerate differences that are not caused by the change.
+
+## Example
+
+Drag (or hover) the divider to compare before/after images.
+
+```tsx
+import { ImageCompare } from '@watanuki/ui/components/image-compare'
+
+<ImageCompare
+  beforeImage="/placeholder-800x450.svg"
+  afterImage="/placeholder-800x450-after.svg"
+/>
+```
+
+<ImageCompare
+  beforeImage="/placeholder-800x450.svg"
+  afterImage="/placeholder-800x450-after.svg"
+  className="my-4"
+/>
