@@ -103,14 +103,13 @@ npx create-watanuki@latest
 Non-interactive (CI):
 
 ```bash
-CI=true pnpm create watanuki my-docs --template next --search local --style classic --pm pnpm --install --no-git
+CI=true pnpm create watanuki my-docs --template next --search local --style classic --pm pnpm --no-git
 ```
 
 Then:
 
 ```bash
 cd my-docs
-pnpm install   # if you skipped --install
 pnpm dev       # docs at /docs
 ```
 

@@ -1,0 +1,28 @@
+---
+title: Terminal
+description: Show animated command-line examples with tabs and output.
+---
+
+The Terminal component presents command-line work as a guided visual story rather than a static wall of output. Animated commands, staged results, and selectable phases help readers understand what runs, what changes, and what success looks like.
+
+## When to use it
+
+- Landing pages that demonstrate a fast developer workflow
+- Release notes showing a new CLI experience
+- Guides where the expected command output is as important as the command
+
+## Why it helps
+
+Use the terminal to communicate a curated workflow, not to reproduce long raw logs. Keep commands believable, output concise, and success or failure states easy to identify at a glance.
+
+## Example
+
+Animated terminal with typewriter command, staggered output, and a sliding tab capsule. Uses theme tokens by default; pass `alwaysDark` to force dark chrome.
+
+```tsx
+import { Terminal, defaultTerminalTabs } from '@watanuki/ui/components/terminal'
+
+<Terminal tabs={defaultTerminalTabs} defaultActiveTab={1} />
+```
+
+<Terminal defaultActiveTab={1} className="my-4" />

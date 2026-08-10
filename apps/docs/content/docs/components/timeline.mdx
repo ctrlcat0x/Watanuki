@@ -1,0 +1,62 @@
+---
+title: Timeline
+description: Present releases, changelogs, and historical milestones.
+---
+
+Timelines organize updates around time, making progression and historical context visible. Dates, version labels, and rich content let readers scan milestones while still opening each entry for meaningful detail.
+
+## When to use it
+
+- Release histories and changelogs
+- Project milestones or incident summaries
+- Roadmaps that describe completed work in chronological order
+
+## Why it helps
+
+Use consistent date and version formats, and lead each item with the outcome readers care about. If chronology is unimportant, cards or ordinary sections will provide a simpler reading order.
+
+## Example
+
+Changelog / release history. Vertical line, dates on the left, version pills, markdown content on the right.
+
+```tsx
+<Timeline>
+  <TimelineItem date="Dec 15, 2025" version="1.0.27">
+    <h3>Icons</h3>
+    <ul>
+      <li>Added <code>SidebarIcon</code> variants</li>
+    </ul>
+  </TimelineItem>
+</Timeline>
+```
+
+<Timeline>
+  <TimelineItem date="Dec 15, 2025" version="1.0.27">
+    <h3>Icons</h3>
+    <ul>
+      <li>
+        Added <code>SidebarIcon</code> variants for collapsed layouts
+      </li>
+      <li>
+        Fixed dark-mode contrast on <code>fd-muted-foreground</code>
+      </li>
+    </ul>
+  </TimelineItem>
+  <TimelineItem date="Nov 2, 2025" version="1.0.20">
+    <h3>Search</h3>
+    <ul>
+      <li>Orama static index export</li>
+      <li>
+        Keyboard shortcut <code>⌘K</code> / <code>Ctrl+K</code>
+      </li>
+    </ul>
+  </TimelineItem>
+  <TimelineItem date="Sep 18, 2025" version="1.0.0">
+    <h3>Initial release</h3>
+    <ul>
+      <li>
+        Docs layouts, MDX primitives, and <code>create-watanuki</code>
+      </li>
+    </ul>
+  </TimelineItem>
+</Timeline>

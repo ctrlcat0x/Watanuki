@@ -1,0 +1,60 @@
+---
+title: Admonitions
+description: Highlight notes, tips, warnings, and important outcomes.
+---
+
+Admonitions separate important context from the normal flow of a guide. Their color, label, and border give readers an immediate signal about whether a message is informational, helpful, risky, or confirmation that a task succeeded.
+
+## When to use it
+
+- Prerequisites or details readers commonly miss
+- Safer alternatives, shortcuts, and practical tips
+- Warnings before destructive, irreversible, or security-sensitive actions
+
+## Why it helps
+
+Callouts work because they create a clear information hierarchy. Reserve them for genuinely important messages; too many callouts compete with each other and make the page harder to scan.
+
+## Example
+
+Callouts cover common guidance states. Use the JSX component or MDX directives (`:::note`, `:::tip`, …).
+
+<Callout type="note" title="Note">
+  Neutral context or a short aside.
+</Callout>
+
+<Callout type="tip" title="Tip">
+  Practical advice that helps readers move faster.
+</Callout>
+
+<Callout type="info" title="Info">
+  Supporting detail that is good to know.
+</Callout>
+
+<Callout type="warning" title="Warning">
+  Proceed carefully — something may break.
+</Callout>
+
+<Callout type="danger" title="Danger">
+  Destructive or irreversible actions.
+</Callout>
+
+<Callout type="success" title="Success">
+  Confirmation that things worked.
+</Callout>
+
+<Callout type="question" title="Question">
+  Prompt readers to think or check something.
+</Callout>
+
+Directive form (with `remark-directive` + `remarkDirectiveAdmonition`):
+
+```mdx
+:::tip[Pro tip]
+Prefer typed config in `watanuki.config.ts`.
+:::
+
+:::danger
+Do not commit secrets.
+:::
+```

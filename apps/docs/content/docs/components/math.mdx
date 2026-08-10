@@ -1,0 +1,43 @@
+---
+title: Math (KaTeX)
+description: Render inline and block mathematics with KaTeX.
+---
+
+KaTeX renders mathematical notation as clear, structured typography instead of images or improvised plain text. Equations remain crisp, selectable, and consistent across inline explanations and larger derivations.
+
+## When to use it
+
+- Scientific, engineering, and financial documentation
+- API guides that define formulas or scoring models
+- Tutorials where symbols and relationships must remain precise
+
+## Why it helps
+
+Use inline math for short expressions and block math for equations readers need to inspect. Define unfamiliar symbols in nearby prose so the formula supports understanding instead of replacing it.
+
+## Example
+
+Opt-in. Enable in `source.config.ts` and import KaTeX CSS.
+
+Use `$…$` / `$$…$$` — not a `math` code fence (Shiki has no `math` language):
+
+```ts
+export default defineConfig({
+  mdxOptions: {
+    remarkMathOptions: {},
+    rehypeKatexOptions: {},
+  },
+})
+```
+
+```css
+@import 'katex/dist/katex.min.css';
+```
+
+Inline: $E = mc^2$
+
+Block:
+
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$

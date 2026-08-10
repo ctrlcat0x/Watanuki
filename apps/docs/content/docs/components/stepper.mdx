@@ -1,0 +1,42 @@
+---
+title: Stepper (horizontal)
+description: Build interactive multi-step progress interfaces.
+---
+
+The horizontal stepper presents a small workflow as an interactive sequence. Readers can see overall progress, move between stages, and focus on one stage's content without losing their position in the process.
+
+## When to use it
+
+- Setup wizards and onboarding flows
+- Interactive demos with a fixed number of stages
+- Processes where readers may revisit or compare completed steps
+
+## Why it helps
+
+Use a stepper when navigation between stages is part of the experience. For ordinary documentation that should be read top to bottom, the vertical `Steps` component is simpler and easier to scan.
+
+## Example
+
+Interactive progress UI — numbered indicators, connectors, clickable steps, optional prev/next.
+
+```tsx
+<Stepper defaultValue={0}>
+  <StepperItem title="Install" description="Add packages" />
+  <StepperItem title="Configure" description="Set watanuki.config" />
+  <StepperItem title="Write" description="Add MDX pages" />
+</Stepper>
+```
+
+<Stepper defaultValue={0}>
+  <StepperItem title="Install" description="Add packages">
+    Run `pnpm add @watanuki/ui` (and peers) in your docs app.
+  </StepperItem>
+  <StepperItem title="Configure" description="Set watanuki.config">
+    Define layout style and search provider in `lib/watanuki.config.ts`.
+  </StepperItem>
+  <StepperItem title="Write" description="Add MDX pages">
+    Create pages under `content/docs` and register MDX components.
+  </StepperItem>
+</Stepper>
+
+Import from `@watanuki/ui/components/stepper` or use via `@watanuki/ui/mdx`.

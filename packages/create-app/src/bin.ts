@@ -30,7 +30,7 @@ import { staticSearch } from './plugins/static-search';
 
 const command = program
   .argument('[name]', 'the project name')
-  .option('--install', 'install packages automatically')
+  .option('--no-install', 'skip dependency installation')
   .option('--no-git', 'disable auto Git repository initialization')
   .option('--no-shadcn', 'skip shadcn/ui components.json bootstrap')
   .addOption(
@@ -107,8 +107,7 @@ async function main(): Promise<void> {
         return true;
       },
       installDeps: async () => {
-        if (config.install !== undefined) return config.install;
-        return false;
+        return config.install;
       },
     },
     {
@@ -184,12 +183,14 @@ async function main(): Promise<void> {
   const installCommand =
     config.pm === 'npm' ? 'npm install' : config.pm === 'bun' ? 'bun install' : `${config.pm} install`;
 
-  console.log(pc.bold('\nNext steps'));
-  console.log(pc.cyan(`  cd ${projectName}`));
+  console.log(pc.bold('\nStart developing'));
   if (!options.installDeps) {
-    console.log(pc.cyan(`  ${installCommand}`));
+    console.log(
+      pc.cyan(`  cd ${projectName} && ${installCommand} && ${config.pm} ${devCommand}`),
+    );
+  } else {
+    console.log(pc.cyan(`  cd ${projectName} && ${config.pm} ${devCommand}`));
   }
-  console.log(pc.cyan(`  ${config.pm} ${devCommand}`));
   console.log(pc.dim('\nDocs live at /docs. Edit content in content/docs.'));
   if (options.search === 'local') {
     console.log(pc.dim('Search uses built-in fuzzy over /static.json — no API route needed.'));

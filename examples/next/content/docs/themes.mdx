@@ -1,0 +1,41 @@
+---
+title: Themes & Layout Styles
+description: Choose the docs shell, default palette, and reader theme options.
+icon: Palette
+---
+
+Edit `lib/watanuki.config.ts`:
+
+```ts title="lib/watanuki.config.ts"
+import type { WatanukiConfig } from '@watanuki/theme/config';
+
+export const watanukiConfig = {
+  style: 'classic',
+  defaultTheme: 'dark',
+  toc: {
+    style: 'clerk',
+  },
+} satisfies WatanukiConfig;
+```
+
+## Layout styles
+
+`style` controls page structure:
+
+| Value | Best for |
+| --- | --- |
+| `classic` | Familiar docs sidebar and reading surface |
+| `minimal` | Quiet, content-first documentation |
+| `modern` | Stronger product framing and inset surfaces |
+
+## Color themes
+
+`defaultTheme` controls the first palette readers see. The theme switcher can still let them choose another palette.
+
+Available values:
+
+`light`, `dark`, `catppuccin`, `monokai`, `gruvbox-hard`, `gruvbox-soft`, `vercel`, `dracula`, `ayu`, `lobster`, `notion`, `oscurange`, `synthwave`, `winter`, `spring`, `autumn`, `summer`
+
+<Callout type="tip" title="Keep structure stable">
+  Pick one layout style for your product. Let readers switch color themes without changing navigation.
+</Callout>

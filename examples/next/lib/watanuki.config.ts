@@ -9,4 +9,11 @@ export const watanukiConfig = {
   search: {
     provider: 'local',
   },
+  seo: {
+    og: { enabled: true },
+    sitemap: true,
+    robots: true,
+    structuredData: true,
+    llms: true,
+  },
 } satisfies WatanukiConfig;

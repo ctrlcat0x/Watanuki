@@ -1,5 +1,6 @@
 import './global.css';
 import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
 import { watanukiConfig } from '@/lib/watanuki.config';
 import { DocsRootProvider } from '@/components/docs-root-provider';
 import { getThemeInitScript, isDarkTheme } from '@watanuki/theme';
@@ -14,10 +15,40 @@ const inter = Inter({
 });
 
 const defaultTheme = watanukiConfig.defaultTheme ?? 'dark';
+const description = 'Documentation framework for Next.js';
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  applicationName: appName,
+  title: {
+    default: appName,
+    template: `%s | ${appName}`,
+  },
+  description,
+  icons: {
+    icon: '/icon.png',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: appName,
+    url: '/',
+    title: appName,
+    description,
+  },
+  twitter: {
+    card: 'summary',
+    title: appName,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 const websiteJsonLd = isStructuredDataEnabled()
   ? createWebsiteJsonLd({
       name: appName,
-      description: 'Documentation framework for Next.js',
+      description,
       baseUrl: siteUrl,
     })
   : null;
@@ -33,6 +64,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
     >
       <head>
         <script
+          id="watanuki-theme-init"
           dangerouslySetInnerHTML={{
             __html: getThemeInitScript(defaultTheme),
           }}

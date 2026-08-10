@@ -1,0 +1,34 @@
+---
+title: File tree
+description: Explain project structure with animated files and folders.
+---
+
+File trees explain where code and content belong before readers start copying snippets. They make folder relationships, nesting, and filenames visible in a form that mirrors the project they will edit.
+
+## When to use it
+
+- Getting-started guides and project overviews
+- Explaining where a new route, config, or content file belongs
+- Showing the final structure after a migration or generator command
+
+## Why it helps
+
+Show only files relevant to the task. Large repository dumps add noise; a focused tree gives readers a reliable map while keeping attention on the files they must touch.
+
+## Example
+
+Use the tree primitives for project structure, CLI output, or generated `<auto-files />` sections.
+
+<Files>
+  <Folder name="app" defaultOpen>
+    <File name="layout.tsx" />
+    <Folder name="docs" defaultOpen>
+      <File name="page.mdx" />
+      <File name="components.mdx" />
+    </Folder>
+  </Folder>
+  <Folder name="content" defaultOpen>
+    <File name="index.mdx" />
+    <File name="getting-started.mdx" />
+  </Folder>
+</Files>

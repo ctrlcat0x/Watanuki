@@ -32,6 +32,16 @@ export function createDocsMetadata({
   const canonical = toAbsoluteUrl(baseUrl, path);
   const ogImage = image ? toAbsoluteUrl(baseUrl, image) : undefined;
   const handle = normalizeHandle(twitterHandle);
+  const images = ogImage
+    ? [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ]
+    : undefined;
 
   return {
     title,
@@ -49,7 +59,7 @@ export function createDocsMetadata({
       title,
       description,
       siteName,
-      images: ogImage ? [ogImage] : undefined,
+      images,
     },
     twitter: {
       card: ogImage ? 'summary_large_image' : 'summary',

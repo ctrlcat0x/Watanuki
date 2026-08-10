@@ -10,7 +10,6 @@ import {
   useRef,
   useState,
   type ComponentProps,
-  type ReactNode,
 } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { cn } from '@/utils/cn';

@@ -14,23 +14,22 @@ pnpm create watanuki
 
 - **Framework** — Next.js (recommended), TanStack Start, or Waku
 - **Layout style** — `classic`, `minimal`, or `modern`
-- **Search** — static Orama indexes (recommended), local API, Algolia, or Orama Cloud
+- **Search** — local fuzzy search (recommended), Algolia, or Orama Cloud
 
 Non-interactive example:
 
 ```bash
-pnpm create watanuki my-docs --template next --style classic --search static --install
+pnpm create watanuki my-docs --template next --style classic --search local
 ```
 
 ## 2. Install and run
 
 ```bash
 cd my-docs
-pnpm install   # skip if you passed --install
 pnpm dev
 ```
 
-Docs are served at `/docs` by default.
+Dependencies install automatically. Pass `--no-install` only when another tool will install them. Docs are served at `/docs` by default.
 
 ## 3. Understand the layout
 

@@ -1,0 +1,31 @@
+{
+  "title": "Components",
+  "icon": "Boxes",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "---Content---",
+    "admonitions",
+    "accordion",
+    "tabs",
+    "steps",
+    "stepper",
+    "file-tree",
+    "type-table",
+    "---Media---",
+    "media",
+    "youtube",
+    "browser-frame",
+    "image-comparison",
+    "tweet-card",
+    "---Technical---",
+    "code-blocks",
+    "mermaid",
+    "terminal",
+    "comparison-table",
+    "hover-card",
+    "github-info",
+    "timeline",
+    "math"
+  ]
+}

@@ -1,0 +1,76 @@
+---
+title: Type table
+description: Document props and TypeScript contracts in structured tables.
+---
+
+Type tables turn props and configuration contracts into a reference readers can scan quickly. Names, types, defaults, requirements, and descriptions stay aligned, reducing the effort needed to understand an API surface.
+
+## When to use it
+
+- React component props
+- Configuration objects and environment options
+- Typed SDK methods or schema fields
+
+## Why it helps
+
+Descriptions should explain behavior and constraints, not repeat the type name. Document defaults and required fields consistently so readers can build a correct object without inspecting source code.
+
+## Example
+
+Use `TypeTable` for API contracts, config references, and prop documentation.
+
+<TypeTable
+  type={{
+    name: {
+      type: 'string',
+      description: 'Visible field label.',
+      required: true,
+    },
+    defaultOpen: {
+      type: 'boolean',
+      description: 'Opens the branch on first render.',
+      default: 'false',
+    },
+    icon: {
+      type: 'ReactNode',
+      description: 'Optional icon override for file items.',
+    },
+  }}
+/>
+
+### AutoTypeTable
+
+Generate the same table from a TypeScript export via `@watanuki/typescript`.
+
+Wire once in MDX components:
+
+```tsx
+import { createGenerator } from '@watanuki/typescript'
+import { AutoTypeTable } from '@watanuki/typescript/ui'
+
+const generator = createGenerator()
+
+AutoTypeTable: (props) => <AutoTypeTable {...props} generator={generator} />
+```
+
+Then in MDX:
+
+```mdx
+<AutoTypeTable path="./lib/sample-types.ts" name="SampleButtonProps" />
+```
+
+<AutoTypeTable path="./lib/sample-types.ts" name="SampleButtonProps" />
+
+Inline type (no file):
+
+<AutoTypeTable
+  name="InlineProps"
+  type={`
+export interface InlineProps {
+  /** Site title shown in the navbar */
+  title: string
+  /** Optional subtitle */
+  description?: string
+}
+`}
+/>
