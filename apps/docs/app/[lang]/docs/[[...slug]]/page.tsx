@@ -1,4 +1,4 @@
-import { getPageImage, getPageMarkdownUrl, source } from '@/lib/source';
+import { getLLMText, getPageImage, getPageMarkdownUrl, source } from '@/lib/source';
 import {
   DocsBody,
   DocsDescription,
@@ -17,6 +17,7 @@ import { OpenAPIPage } from '@/components/api-page';
 import { createDocsJsonLd, createDocsMetadata } from '@watanuki/ui/metadata';
 import { watanukiConfig } from '@/lib/watanuki.config';
 import { getTwitterHandle, isOgEnabled, isStructuredDataEnabled } from '@/lib/seo';
+import { DocsAIPageContext } from '@watanuki/ui/components/docs-ai';
 
 export default async function Page(props: {
   params: Promise<{ lang: string; slug?: string[] }>;
@@ -24,6 +25,7 @@ export default async function Page(props: {
   const params = await props.params;
   const page = source.getPage(params.slug, params.lang);
   if (!page) notFound();
+  const aiContext = watanukiConfig.ai?.enabled ? await getLLMText(page) : null;
 
   if (page.type === 'openapi') {
     return (
@@ -33,6 +35,9 @@ export default async function Page(props: {
         tableOfContent={{ style: watanukiConfig.toc?.style }}
         tableOfContentPopover={{ style: watanukiConfig.toc?.style }}
       >
+        {aiContext ? (
+          <DocsAIPageContext title={page.data.title ?? 'Untitled'} url={page.url} markdown={aiContext} />
+        ) : null}
         <DocsTitle>{page.data.title}</DocsTitle>
         <DocsDescription>{page.data.description}</DocsDescription>
         <DocsBody>
@@ -61,6 +66,9 @@ export default async function Page(props: {
       tableOfContent={{ style: watanukiConfig.toc?.style }}
       tableOfContentPopover={{ style: watanukiConfig.toc?.style }}
     >
+      {aiContext ? (
+        <DocsAIPageContext title={page.data.title ?? 'Untitled'} url={page.url} markdown={aiContext} />
+      ) : null}
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
       <div className="flex flex-row flex-wrap gap-2 items-center border-b pb-6">
