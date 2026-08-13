@@ -148,9 +148,15 @@ export interface WatanukiSeoConfig {
   x?: { handle?: string };
 }
 
+export interface WatanukiAIConfig {
+  /** Runs LFM2-350M locally in the browser with WebGPU; no document or chat data leaves the device. */
+  enabled?: boolean;
+}
+
 export interface WatanukiConfig extends WatanukiThemeConfig {
   search?: WatanukiSearchConfig;
   seo?: WatanukiSeoConfig;
+  ai?: WatanukiAIConfig;
 }
 
 export function defineConfig<T extends WatanukiConfig>(config: T): T {
@@ -165,6 +171,9 @@ export const defaultConfig: WatanukiConfig = {
   },
   search: {
     provider: 'local',
+  },
+  ai: {
+    enabled: false,
   },
   seo: {
     og: { enabled: true },

@@ -10,6 +10,10 @@ export const watanukiConfig = {
   search: {
     provider: 'local',
   },
+  // Uses LFM2-350M locally in the browser through WebGPU.
+  ai: {
+    enabled: true,
+  },
   seo: {
     og: { enabled: true },
     rss: { enabled: true, types: ['blog'] },

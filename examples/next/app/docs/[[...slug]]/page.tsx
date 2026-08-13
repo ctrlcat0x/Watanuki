@@ -1,4 +1,4 @@
-import { getPageImage, getPageMarkdownUrl, source } from '@/lib/source';
+import { getLLMText, getPageImage, getPageMarkdownUrl, source } from '@/lib/source';
 import {
   DocsBody,
   DocsDescription,
@@ -17,11 +17,13 @@ import { watanukiConfig } from '@/lib/watanuki.config';
 import { appName, siteUrl } from '@/lib/shared';
 import { createDocsJsonLd, createDocsMetadata } from '@watanuki/ui/metadata';
 import { getTwitterHandle, isOgEnabled, isStructuredDataEnabled } from '@/lib/seo';
+import { DocsAIPageContext } from '@watanuki/ui/components/docs-ai';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
+  const aiContext = watanukiConfig.ai?.enabled ? await getLLMText(page) : null;
 
   const MDX = page.data.body;
   const markdownUrl = getPageMarkdownUrl(page).url;
@@ -43,6 +45,9 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
       tableOfContent={{ style: watanukiConfig.toc?.style }}
       tableOfContentPopover={{ style: watanukiConfig.toc?.style }}
     >
+      {aiContext ? (
+        <DocsAIPageContext title={page.data.title ?? 'Untitled'} url={page.url} markdown={aiContext} />
+      ) : null}
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
       <div className="flex flex-row flex-wrap gap-2 items-center border-b pb-6">

@@ -2,6 +2,8 @@ import { source } from '@/lib/source';
 import { DocsLayout } from '@watanuki/ui/layouts/docs';
 import { baseOptions } from '@/lib/layout.shared';
 import { i18n } from '@/lib/i18n';
+import { DocsAI } from '@/components/docs-ai';
+import { watanukiConfig } from '@/lib/watanuki.config';
 
 export default async function Layout({
   children,
@@ -12,11 +14,13 @@ export default async function Layout({
 }) {
   const { lang } = await params;
 
-  return (
+  const docs = (
     <DocsLayout tree={source.getPageTree(lang)} {...baseOptions()} i18n>
       {children}
     </DocsLayout>
   );
+
+  return watanukiConfig.ai?.enabled ? <DocsAI>{docs}</DocsAI> : docs;
 }
 
 export function generateStaticParams() {
