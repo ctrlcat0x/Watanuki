@@ -2,13 +2,17 @@
 
 import { ArrowUp, Bot, LoaderCircle, RotateCcw, Sparkles, X } from 'lucide-react';
 import type { TextGenerationPipeline } from '@huggingface/transformers';
+import { createMarkdownRenderer } from '@watanuki/core/content/md';
+import remarkGfm from 'remark-gfm';
 import {
+  type ComponentProps,
   createContext,
   type FormEvent,
   type ReactNode,
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -20,6 +24,7 @@ import {
   MessageScrollerContent,
   MessageScrollerItem,
   MessageScrollerViewport,
+  useMessageScroller,
 } from '@/components/ui/message-scroller';
 import { cn } from '@/utils/cn';
 
@@ -35,6 +40,39 @@ const EXAMPLE_QUESTIONS = [
   'What are the key concepts?',
   'Show me a practical example',
 ];
+const chatMarkdownRenderer = createMarkdownRenderer({ remarkPlugins: [remarkGfm] });
+const chatMarkdownComponents = {
+  a({ href, ...props }: ComponentProps<'a'>) {
+    return (
+      <a
+        {...props}
+        href={href}
+        target="_blank"
+        rel="noreferrer noopener"
+        className="font-medium underline underline-offset-4"
+      />
+    );
+  },
+  code(props: ComponentProps<'code'>) {
+    return <code {...props} className="rounded bg-fd-secondary px-1 py-0.5 font-mono text-[0.8125rem]" />;
+  },
+  pre(props: ComponentProps<'pre'>) {
+    return (
+      <pre
+        {...props}
+        className="my-3 max-w-full overflow-x-auto rounded-lg border bg-fd-secondary p-3 text-[0.8125rem]"
+      />
+    );
+  },
+};
+
+function FollowStream({ value }: { value: string }) {
+  const { scrollToEnd } = useMessageScroller();
+  useEffect(() => {
+    scrollToEnd({ behavior: 'auto' });
+  }, [scrollToEnd, value]);
+  return null;
+}
 
 export function DocsAIProvider({
   children,
@@ -52,6 +90,31 @@ export function DocsAIProvider({
   const [status, setStatus] = useState<'waiting' | 'loading' | 'ready' | 'error'>('waiting');
   const [progress, setProgress] = useState(0);
   const [statusLabel, setStatusLabel] = useState('Waiting to load');
+  const [sidebarBackground, setSidebarBackground] = useState<string>();
+
+  useLayoutEffect(() => {
+    const syncSidebarBackground = () => {
+      const sidebar = document.querySelector('#nd-sidebar');
+      if (!sidebar) return false;
+      setSidebarBackground(getComputedStyle(sidebar).backgroundColor);
+      return true;
+    };
+    const mountObserver = new MutationObserver(() => {
+      if (syncSidebarBackground()) mountObserver.disconnect();
+    });
+    if (!syncSidebarBackground()) {
+      mountObserver.observe(document.body, { childList: true, subtree: true });
+    }
+    const themeObserver = new MutationObserver(syncSidebarBackground);
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class', 'data-watanuki-style', 'data-watanuki-theme'],
+    });
+    return () => {
+      mountObserver.disconnect();
+      themeObserver.disconnect();
+    };
+  }, []);
 
   const ensureModel = useCallback(async () => {
     if (modelRef.current) return modelRef.current;
@@ -152,17 +215,24 @@ export function DocsAIProvider({
 
   return (
     <DocsAIContext.Provider value={contextValue}>
-      <div
-        className="grid min-h-dvh transition-[grid-template-columns] duration-300 ease-out motion-reduce:transition-none"
-        style={{ gridTemplateColumns: open ? 'minmax(0, 3fr) minmax(20rem, 1fr)' : 'minmax(0, 1fr) 0px' }}
-      >
-        <div className={cn('min-w-0', open && 'max-md:hidden')}>{children}</div>
+      <div className="min-h-dvh overflow-x-clip">
+        <div
+          className={cn(
+            'min-w-0 w-full transition-[width] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none',
+            open && 'max-md:invisible md:w-[75%]',
+          )}
+        >
+          {children}
+        </div>
         <aside
           aria-label="Ask AI"
+          data-docs-ai-panel=""
+          style={{ backgroundColor: sidebarBackground }}
           className={cn(
-            'sticky top-0 z-50 flex h-dvh min-w-0 flex-col overflow-hidden border-s bg-fd-background transition-opacity duration-200 motion-reduce:transition-none',
-            open ? 'opacity-100' : 'pointer-events-none opacity-0',
-            'max-md:fixed max-md:inset-0 max-md:w-full',
+            'fixed inset-y-0 end-0 z-50 flex h-dvh w-full min-w-0 flex-col overflow-hidden border-s bg-fd-card transition-[translate,opacity] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none md:w-[25%]',
+            open
+              ? 'translate-x-0 opacity-100 rtl:translate-x-0'
+              : 'pointer-events-none translate-x-full opacity-0 rtl:-translate-x-full',
           )}
         >
           <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4">
@@ -201,6 +271,9 @@ export function DocsAIProvider({
           </div>
 
           <MessageScroller className="flex-1">
+            <FollowStream
+              value={`${messages.length}:${messages.at(-1)?.content.length ?? 0}`}
+            />
             <MessageScrollerViewport>
               <MessageScrollerContent className="min-h-full px-4 py-5">
                 {messages.length === 0 ? (
@@ -242,7 +315,19 @@ export function DocsAIProvider({
                             : 'bg-fd-accent text-fd-accent-foreground',
                         )}
                       >
-                        {message.content || <LoaderCircle className="size-4 animate-spin" aria-label="Thinking" />}
+                        {message.content ? (
+                          message.role === 'assistant' ? (
+                            <div className="prose prose-sm prose-no-margin max-w-none break-words text-inherit prose-headings:text-inherit prose-strong:text-inherit prose-code:text-inherit prose-a:text-inherit">
+                              <chatMarkdownRenderer.Markdown components={chatMarkdownComponents}>
+                                {message.content}
+                              </chatMarkdownRenderer.Markdown>
+                            </div>
+                          ) : (
+                            message.content
+                          )
+                        ) : (
+                          <LoaderCircle className="size-4 animate-spin" aria-label="Thinking" />
+                        )}
                       </div>
                     </MessageScrollerItem>
                   ))

@@ -168,6 +168,7 @@
     "next-themes": "^0.4.6",
     "react-remove-scroll": "^2.7.2",
     "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
     "scroll-into-view-if-needed": "^3.1.0",
     "shiki": "^4.2.0",
     "unist-util-visit": "^5.1.0"
